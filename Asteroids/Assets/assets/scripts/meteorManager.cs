@@ -15,7 +15,7 @@ public class meteorManager : MonoBehaviour
         meteorPooler = MeteorPooler.Instance;
 
         for(int i = 0; i < 4; i++) {
-            spawnMeteor(i);
+            spawnMeteor();
         }
     }
 
@@ -23,19 +23,20 @@ public class meteorManager : MonoBehaviour
     {
         spawnInterval -= Time.deltaTime;
         if(spawnInterval <= 0) {
-            spawnInterval = 20f;
-            for(int i = 0; i < 4; i++) {
-                spawnMeteor(i);
+            spawnInterval = 5f;
+            for(int i = 0; i < 1; i++) {
+                spawnMeteor();
             }
         }
     }
 
-    void spawnMeteor(int spawn) 
+    public void spawnMeteor() 
     {
         int randMeteor = Random.Range(0, meteorPrefabs.Length);
+        int randSpawn = Random.Range(0, spawns.Length);
         // int randX = Random.Range(0, xValues.Length);
         // int randY = Random.Range(0, yValues.Length);
-        meteorPooler.spawnMeteorsFromPool(meteorPrefabs[randMeteor], spawns[spawn].position, Quaternion.identity);
+        meteorPooler.spawnMeteorsFromPool(meteorPrefabs[randMeteor], spawns[randSpawn].position, Quaternion.identity);
         // meteor.GetComponent<meteorMovement>().xValue = xValues[randX];
         // meteor.GetComponent<meteorMovement>().yValue = yValues[randY];
     }

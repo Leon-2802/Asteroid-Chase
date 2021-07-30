@@ -4,51 +4,57 @@ using UnityEngine;
 
 public class meteorMovement : MonoBehaviour
 {
+    meteorManager meteorManager;
     [SerializeField] private float speed = 1f;
     public float xValue = 2f;
     public float yValue = 1f;
-    [SerializeField] private float[] xValues = null;
-    [SerializeField] private float[] yValues = null;
+    public string spawnPos;
+    [SerializeField] private float[] xValuesPos = {0.7f, 1.3f, 1f, 2f};
+     [SerializeField] private float[] xValuesNeg = {-0.7f, -1.3f, -1f, -2f};
+    [SerializeField] private float[] yValuesPos = {0.7f, 1.3f, 1f, 2f, 3f, 1.5f};
+    [SerializeField] private float[] yValuesNeg = {-0.7f, -1.3f, -1f, -2f, -3f, -1.5f};
     Vector3 initialPos;
+    private float relocationTimer = 2f;
+    private bool enableRelocation = false;
 
-    public void OnEnable() {
-        initialPos = transform.position;
-        xValue = Random.Range(0, xValues.Length);
-        yValue = Random.Range(0, yValues.Length);
+    private void Start() {
+        meteorManager = GameObject.FindWithTag("meteorManager").GetComponent<meteorManager>();
     }
+    public void OnEnable() 
+    {
+        relocationTimer = 2f;
+        initialPos = transform.position;
+        float indexX = Random.Range(0, xValuesPos.Length);
+        float indexY = Random.Range(0, xValuesPos.Length);
+        
+        if(initialPos.y > 0)
+            yValue = yValuesNeg[(int)indexY];
+        else
+            yValue = yValuesPos[(int)indexY];
+
+        if(initialPos.x > 0)
+            xValue = xValuesNeg[(int)indexX];
+        else
+            xValue = xValuesPos[(int)indexX];
+    }
+
     void Update()
     {
         Vector3 newPos = transform.position;
         newPos += new Vector3(xValue, yValue) * speed * Time.deltaTime;
         transform.position = newPos;
 
-        if(transform.position.y >= 11.6f || transform.position.y <= -10.6f || transform.position.x >= 19.6f || transform.position.x <= -19.3f) {
+        // if(relocationTimer >= 0) 
+        //     relocationTimer -= Time.deltaTime;
+        // else 
+        //     enableRelocation = true;
+
+        if(transform.position.y >= 14f || transform.position.y <= -12f || transform.position.x >= 19.4f || transform.position.x <= -23f) 
             relocate();
-        }
     }
 
     void relocate() {
-        if(transform.position.y >= 11.6f) {
-            Vector3 relocate = transform.position;
-            relocate.y = -11f;
-            transform.position = relocate;
-        }
-        else if(transform.position.x >= 19.6f) {
-            Vector3 relocate = transform.position;
-            relocate.x = -19.3f;
-            transform.position = relocate;
-        }
-        else if(transform.position.x <= 19.3f) {
-            Vector3 relocate = transform.position;
-            relocate.x = 19.6f;
-            transform.position = relocate;
-        }
-        else if(transform.position.y <= -10.6f) {
-            Vector3 relocate = transform.position;
-            relocate.y = 11f;
-            transform.position = relocate;
-        }
-        // xValue = Random.Range(0, xValues.Length);
-        // yValue = Random.Range(0, yValues.Length);
+        meteorManager.spawnMeteor();
+        this.gameObject.SetActive(false);
     }
 }
