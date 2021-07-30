@@ -11,6 +11,8 @@ public class MeteorPooler : MonoBehaviour
         public GameObject prefab;
         public int size;
     }
+    public List<Pool> pools;
+    public Dictionary<string, Queue<GameObject>> poolDictionary;
 
     #region Singleton
 
@@ -18,14 +20,6 @@ public class MeteorPooler : MonoBehaviour
     
     private void Awake() {
         Instance = this;
-    }
-
-    #endregion
-
-    public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
-    void Start()
-    {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         foreach (Pool pool in pools) {
@@ -40,6 +34,8 @@ public class MeteorPooler : MonoBehaviour
             poolDictionary.Add(pool.tag, objectPool);
         }
     }
+
+    #endregion
 
     public GameObject spawnMeteorsFromPool (string tag, Vector3 pos, Quaternion rot) {
         if(!poolDictionary.ContainsKey(tag)) {
