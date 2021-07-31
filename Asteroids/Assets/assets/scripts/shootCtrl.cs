@@ -6,10 +6,14 @@ public class shootCtrl : MonoBehaviour
 {
     [SerializeField] private GameObject laser = null;
     [SerializeField] private Transform firePointL = null;
+    [SerializeField] private GameObject seismicCharge = null;
+    [SerializeField] private Transform seismicFirePoint = null;
     private Touch touch;
 
     private float recharge = 0.4f;
     private bool canShoot = true;
+    [SerializeField] private int seismicCount = 0;
+    // [SerializeField] private bool canLaunch = true;
 
     void Update()
     {
@@ -34,6 +38,19 @@ public class shootCtrl : MonoBehaviour
             if(recharge <= 0) {
                 canShoot = true;
             }
+        }
+
+        if(Input.GetButtonDown("Fire2") && seismicCount > 0) {
+            Instantiate(seismicCharge, seismicFirePoint.position, seismicFirePoint.rotation);
+            seismicCount--;
+        }
+    }
+
+    public void launchCharge() 
+    {
+         if(seismicCount > 0) {
+            Instantiate(seismicCharge, seismicFirePoint.position, seismicFirePoint.rotation);
+            seismicCount--;
         }
     }
 }

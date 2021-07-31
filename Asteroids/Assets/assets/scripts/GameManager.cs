@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text timer = null;
     private int scoreCounter = 0;
     private float timerFloat = 0;
-    private int minuteCounter = 0;
+    private int minuteCounter = 0; 
 
     private void Awake() 
     {

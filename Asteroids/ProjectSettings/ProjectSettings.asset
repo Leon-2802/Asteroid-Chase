@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: BonsaiGames
-  productName: Meteors_Test_1.2
+  productName: AsteroidChase[Alpha 1.0]
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -268,7 +268,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0ccf8e6fa1b37784882b8a80f61f8f0a, type: 3}
+      m_Icon: {fileID: 2800000, guid: 48c046517fa81bd4d8b67e6b357c6374, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

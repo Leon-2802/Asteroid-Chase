@@ -9,10 +9,12 @@ public class meteorManager : MonoBehaviour
     // [SerializeField] private float[] xValues = null;
     // [SerializeField] private float[] yValues = null;
     [SerializeField] private Transform[] spawns = null;
-    private float spawnInterval = 20f;
+    [SerializeField] private float spawnTime = 0f;
+    private float spawnInterval;
 
     void Start() {
         meteorPooler = MeteorPooler.Instance;
+        spawnInterval = spawnTime;
 
         for(int i = 0; i < 4; i++) {
             spawnMeteor();
@@ -23,7 +25,7 @@ public class meteorManager : MonoBehaviour
     {
         spawnInterval -= Time.deltaTime;
         if(spawnInterval <= 0) {
-            spawnInterval = 5f;
+            spawnInterval = spawnTime;
             for(int i = 0; i < 1; i++) {
                 spawnMeteor();
             }

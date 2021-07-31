@@ -14,15 +14,12 @@ public class meteorMovement : MonoBehaviour
     [SerializeField] private float[] yValuesPos = {0.7f, 1.3f, 1f, 2f, 3f, 1.5f};
     [SerializeField] private float[] yValuesNeg = {-0.7f, -1.3f, -1f, -2f, -3f, -1.5f};
     Vector3 initialPos;
-    private float relocationTimer = 2f;
-    private bool enableRelocation = false;
 
     private void Start() {
         meteorManager = GameObject.FindWithTag("meteorManager").GetComponent<meteorManager>();
     }
     public void OnEnable() 
     {
-        relocationTimer = 2f;
         initialPos = transform.position;
         float indexX = Random.Range(0, xValuesPos.Length);
         float indexY = Random.Range(0, xValuesPos.Length);
@@ -44,12 +41,7 @@ public class meteorMovement : MonoBehaviour
         newPos += new Vector3(xValue, yValue) * speed * Time.deltaTime;
         transform.position = newPos;
 
-        // if(relocationTimer >= 0) 
-        //     relocationTimer -= Time.deltaTime;
-        // else 
-        //     enableRelocation = true;
-
-        if(transform.position.y >= 14f || transform.position.y <= -12f || transform.position.x >= 19.4f || transform.position.x <= -23f) 
+        if(transform.position.y >= 14.4f || transform.position.y <= -12f || transform.position.x >= 19.4f || transform.position.x <= -23f) 
             relocate();
     }
 

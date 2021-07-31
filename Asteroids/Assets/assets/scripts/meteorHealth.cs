@@ -24,13 +24,17 @@ public class meteorHealth : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.collider.CompareTag("laser")) {
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.collider.CompareTag("laser")) 
             currentHealth -= 10;
-        }
+    
+        if(other.collider.CompareTag("seismic")) 
+            currentHealth = 0;
     }
 
-    void Die() {
+    void Die() 
+    {
         if(diePrefab != null) {
             for(int i = 0; i < dieObjectCount; i++) {
                 meteorPooler.spawnMeteorsFromPool(diePrefab, transform.position, transform.rotation);

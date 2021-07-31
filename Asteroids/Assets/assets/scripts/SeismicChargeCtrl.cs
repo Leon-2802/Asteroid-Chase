@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class laserCtrl : MonoBehaviour
+public class SeismicChargeCtrl : laserCtrl
 {
-    [SerializeField] protected float speed = 55f;
-    public float lifetime = 5f;
-    public bool noHit = true;
-    
     void Update()
     {
         if(noHit == true) {
             Vector3 newPosition = transform.position;
-            newPosition += transform.up * speed * Time.deltaTime;
+            newPosition -= transform.up * speed * Time.deltaTime;
             transform.position = newPosition;
         }
 
