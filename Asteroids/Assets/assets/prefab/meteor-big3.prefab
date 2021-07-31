@@ -140,21 +140,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6e549dde5083f4ab8fcd813f623080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectTag: big3
   speed: 1
   xValue: 2
   yValue: 1
-  xValues:
-  - -1
-  - 2.3
+  spawnPos: 
+  xValuesPos:
   - 0.7
+  - 1.3
   - 1
-  yValues:
   - 2
-  - 2.7
-  - 1.2
-  - 0.5
+  xValuesNeg:
+  - -0.7
+  - -1.3
+  - -1
+  - -2
+  yValuesPos:
+  - 0.7
+  - 1.3
+  - 1
+  - 2
+  - 3
   - 1.5
-  - 2.1
+  yValuesNeg:
+  - -0.7
+  - -1.3
+  - -1
+  - -2
+  - -3
+  - -1.5
 --- !u!114 &-9140933240424448148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6c5196e525ccd47920d4b07ed81a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  objectTag: big3
+  maxHealth: 30
   diePrefab: medium
   dieObjectCount: 3
   points: 1

@@ -42,4 +42,8 @@ public class meteorManager : MonoBehaviour
         // meteor.GetComponent<meteorMovement>().xValue = xValues[randX];
         // meteor.GetComponent<meteorMovement>().yValue = yValues[randY];
     }
+
+    public void meteorRelocated(string tag) {
+        meteorPooler.meteorDestroyed(tag);
+    }
 }

@@ -5312,21 +5312,26 @@ MonoBehaviour:
     prefab: {fileID: 1024071647318481553, guid: 4bf65353b5f3e894a968a11889c1c4da,
       type: 3}
     size: 50
+    numberOfActive: 0
   - tag: big2
     prefab: {fileID: 626796248649480402, guid: 6b6de498bcd7aef4ca3b20c70b97501d, type: 3}
     size: 50
+    numberOfActive: 0
   - tag: big3
     prefab: {fileID: 4100307084957739011, guid: f1c02bb6459ab8f4bb0f093520ec6519,
       type: 3}
     size: 50
+    numberOfActive: 0
   - tag: medium
     prefab: {fileID: 3056980462409168663, guid: 60611ec18c4f5db41833a7fbbfea42ed,
       type: 3}
     size: 100
+    numberOfActive: 0
   - tag: small
     prefab: {fileID: 5318601483020179230, guid: 2cf5e8428c80615468a0878b1501be6a,
       type: 3}
     size: 100
+    numberOfActive: 0
 --- !u!1 &165781835
 GameObject:
   m_ObjectHideFlags: 0
@@ -5493,7 +5498,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 73c8eb9fc4863284fa75e8d01f94a20e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.615
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5746,7 +5751,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3 x
+  m_Text: 5 x
 --- !u!222 &626756246
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7001,7 +7006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa60420832f50e44939e6800d98c0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 5
   rb: {fileID: 1604149380}
   joystickL: {fileID: 2929252284397862576}
   joystickR: {fileID: 4365747848666896664}
@@ -7023,7 +7028,7 @@ MonoBehaviour:
   seismicCharge: {fileID: 8450384051958314369, guid: 246e680aa33b44f499df5d714cc7b4dd,
     type: 3}
   seismicFirePoint: {fileID: 1549846240}
-  seismicCount: 3
+  seismicCount: 5
 --- !u!95 &1604149386
 Animator:
   serializedVersion: 3
@@ -7087,7 +7092,7 @@ MonoBehaviour:
   - {fileID: 1389470407}
   - {fileID: 1069280848}
   greyHeart: {fileID: 21300000, guid: db9f57117d79ff74583497118722bf97, type: 3}
-  maxHealth: 60
+  maxHealth: 150
 --- !u!1 &1651752040
 GameObject:
   m_ObjectHideFlags: 0

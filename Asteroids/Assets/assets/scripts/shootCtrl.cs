@@ -12,8 +12,10 @@ public class shootCtrl : MonoBehaviour
 
     private float recharge = 0.4f;
     private bool canShoot = true;
+
     [SerializeField] private int seismicCount = 0;
-    // [SerializeField] private bool canLaunch = true;
+    private float seismicRecharge = 5f;
+    private bool canLaunch = true;
 
     void Update()
     {
@@ -41,14 +43,20 @@ public class shootCtrl : MonoBehaviour
         }
 
         if(Input.GetButtonDown("Fire2") && seismicCount > 0) {
-            Instantiate(seismicCharge, seismicFirePoint.position, seismicFirePoint.rotation);
-            seismicCount--;
+            launchCharge();
+        }
+        if(canLaunch == false) {
+            seismicRecharge -= Time.deltaTime;
+            if(seismicRecharge <= 0)
+                canLaunch = true;
         }
     }
 
     public void launchCharge() 
     {
-         if(seismicCount > 0) {
+         if(seismicCount > 0 && canLaunch == true) {
+            seismicRecharge = 5f;
+            canLaunch = false;
             Instantiate(seismicCharge, seismicFirePoint.position, seismicFirePoint.rotation);
             seismicCount--;
         }

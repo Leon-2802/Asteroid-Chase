@@ -5,7 +5,7 @@ using UnityEngine;
 public class SeismicHit : MonoBehaviour
 {
     public SeismicChargeCtrl seismicCtrl;
-    [SerializeField] private Animator animator = null;
+    // [SerializeField] private Animator animator = null;
     [SerializeField] private GameObject hitSphere = null;
     [SerializeField] private GameObject sprite = null;
 

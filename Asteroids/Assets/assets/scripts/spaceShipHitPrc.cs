@@ -13,7 +13,7 @@ public class spaceShipHitPrc : MonoBehaviour
     [SerializeField] private int maxHealth = 60;
     private int currentHealth = 0;
     private bool hit = false;
-    private float pause = 0.8f;
+    private float pause = 1.5f;
     private void Start() {
         healthbar.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
@@ -26,16 +26,18 @@ public class spaceShipHitPrc : MonoBehaviour
             lives[lifeCount].sprite = greyHeart;
             lifeCount--;
             if(lifeCount <= -1) {
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("main");
                 return;
             }
             healthbar.SetMaxHealth(maxHealth);
         }
-        else if(hit == true) {
+        
+        if(hit == true) {
             pause -= Time.deltaTime;
             if(pause <= 0) {
-                hit = false;
-                pause = 0.8f;
+                currentHealth -= 10;
+                healthbar.SetHealth(currentHealth);
+                pause = 1.5f;
             }
         }
     }
@@ -52,5 +54,11 @@ public class spaceShipHitPrc : MonoBehaviour
             currentHealth -= 10;
             healthbar.SetHealth(currentHealth);
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if(other.CompareTag("target") || other.CompareTag("smolTarget"))
+            hit = false;
     }
 }

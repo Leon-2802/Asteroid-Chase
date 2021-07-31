@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class meteorMovement : MonoBehaviour
 {
+    [SerializeField] private string objectTag = null;
     meteorManager meteorManager;
     [SerializeField] private float speed = 1f;
     public float xValue = 2f;
@@ -47,6 +48,7 @@ public class meteorMovement : MonoBehaviour
 
     void relocate() {
         meteorManager.spawnMeteor();
+        meteorManager.meteorRelocated(objectTag);
         this.gameObject.SetActive(false);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class meteorHealth : MonoBehaviour
 {
+    [SerializeField] private string objectTag = null;
      MeteorPooler meteorPooler;
     [SerializeField] private int maxHealth = 30;
     private int currentHealth = 0;
@@ -40,6 +41,7 @@ public class meteorHealth : MonoBehaviour
                 meteorPooler.spawnMeteorsFromPool(diePrefab, transform.position, transform.rotation);
             }
         }
+        meteorPooler.meteorDestroyed(objectTag);
         GameManager.instance.AsteroidDied(points);
         this.gameObject.SetActive(false);
     }
