@@ -43,6 +43,11 @@ public class meteorManager : MonoBehaviour
         // meteor.GetComponent<meteorMovement>().yValue = yValues[randY];
     }
 
+    public void spawnChildMeteor(string tag) {
+        int randSpawn = Random.Range(0, spawns.Length);
+        meteorPooler.spawnMeteorsFromPool(tag, spawns[randSpawn].position, Quaternion.identity);
+    }
+
     public void meteorRelocated(string tag) {
         meteorPooler.meteorDestroyed(tag);
     }

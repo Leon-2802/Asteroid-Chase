@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class spaceShipHitPrc : MonoBehaviour
 {
+    [SerializeField] private Animator shipAnim = null;
     [SerializeField] private healthbar healthbar = null;
     [SerializeField] private Image[] lives = null;
     [SerializeField] private Sprite greyHeart = null;
@@ -46,11 +47,13 @@ public class spaceShipHitPrc : MonoBehaviour
     {
         if(other.CompareTag("target") && hit == false) {
             hit = true;
+            shipAnim.SetTrigger("Hit");
             currentHealth -= 20;
             healthbar.SetHealth(currentHealth);
         }
         else if(other.CompareTag("smolTarget") && hit == false) {
             hit = true;
+            shipAnim.SetTrigger("Hit");
             currentHealth -= 10;
             healthbar.SetHealth(currentHealth);
         }
@@ -58,7 +61,9 @@ public class spaceShipHitPrc : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) 
     {
-        if(other.CompareTag("target") || other.CompareTag("smolTarget"))
+        if(other.CompareTag("target") || other.CompareTag("smolTarget")) {
             hit = false;
+            shipAnim.SetTrigger("NoHit");
+        }
     }
 }

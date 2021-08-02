@@ -46,8 +46,13 @@ public class meteorMovement : MonoBehaviour
             relocate();
     }
 
-    void relocate() {
-        meteorManager.spawnMeteor();
+    void relocate() 
+    {
+        if(objectTag == "big1" || objectTag == "big2" || objectTag == "big3")
+            meteorManager.spawnMeteor();
+        else 
+            meteorManager.spawnChildMeteor(objectTag);
+        
         meteorManager.meteorRelocated(objectTag);
         this.gameObject.SetActive(false);
     }
