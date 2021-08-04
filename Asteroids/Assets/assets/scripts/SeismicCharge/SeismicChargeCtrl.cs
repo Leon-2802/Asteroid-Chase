@@ -12,9 +12,9 @@ public class SeismicChargeCtrl : laserCtrl
             transform.position = newPosition;
         }
 
-        lifetime -= Time.deltaTime;
+        currentLifetime -= Time.deltaTime;
 
-        if(lifetime <= 0f) {
+        if(currentLifetime <= 0f) {
             Destroy(this.gameObject);
         }
     }

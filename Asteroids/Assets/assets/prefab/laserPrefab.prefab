@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5274378547252a84791364bc78eac26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectTag: laserGreen
   speed: 25
   lifetime: 5
   noHit: 1

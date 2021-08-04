@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5761151336366515195}
   - component: {fileID: 7073513594328307322}
   - component: {fileID: -5706614685583825630}
-  - component: {fileID: 7953216756885524421}
+  - component: {fileID: 3156160821307179934}
   m_Layer: 0
   m_Name: meteor-medium1
   m_TagString: smolTarget
@@ -141,7 +141,7 @@ MonoBehaviour:
   - -2
   - -3
   - -1.5
---- !u!114 &7953216756885524421
+--- !u!114 &3156160821307179934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,11 +150,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3056980462409168663}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6c5196e525ccd47920d4b07ed81a21, type: 3}
+  m_Script: {fileID: 11500000, guid: 265c19ac51968a84f922224fed5a1fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: medium
   maxHealth: 20
+  onDestroyTurret: {fileID: 0}
   diePrefab: small
   dieObjectCount: 2
   points: 2

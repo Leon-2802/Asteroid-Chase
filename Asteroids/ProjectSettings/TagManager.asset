@@ -9,6 +9,7 @@ TagManager:
   - smolTarget
   - meteorManager
   - seismic
+  - enemyLaser
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TurretAsteroids
+    uniqueID: 1253594663
     locked: 0

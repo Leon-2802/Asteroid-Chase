@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class meteorMovement : MonoBehaviour
 {
-    [SerializeField] private string objectTag = null;
+    [SerializeField] public string objectTag = null;
     meteorManager meteorManager;
     [SerializeField] private float speed = 1f;
     public float xValue = 2f;
     public float yValue = 1f;
     public string spawnPos;
-    [SerializeField] private float[] xValuesPos = {0.7f, 1.3f, 1f, 2f};
-     [SerializeField] private float[] xValuesNeg = {-0.7f, -1.3f, -1f, -2f};
-    [SerializeField] private float[] yValuesPos = {0.7f, 1.3f, 1f, 2f, 3f, 1.5f};
-    [SerializeField] private float[] yValuesNeg = {-0.7f, -1.3f, -1f, -2f, -3f, -1.5f};
     Vector3 initialPos;
 
     private void Start() {
@@ -22,18 +18,16 @@ public class meteorMovement : MonoBehaviour
     public void OnEnable() 
     {
         initialPos = transform.position;
-        float indexX = Random.Range(0, xValuesPos.Length);
-        float indexY = Random.Range(0, xValuesPos.Length);
         
         if(initialPos.y > 0)
-            yValue = yValuesNeg[(int)indexY];
+            yValue = UnityEngine.Random.Range(-2f, -0.7f);
         else
-            yValue = yValuesPos[(int)indexY];
+            yValue = UnityEngine.Random.Range(0.7f, 2f);
 
         if(initialPos.x > 0)
-            xValue = xValuesNeg[(int)indexX];
+            xValue = UnityEngine.Random.Range(-2f, 0.7f);
         else
-            xValue = xValuesPos[(int)indexX];
+            xValue = UnityEngine.Random.Range(0.7f, 2f);
     }
 
     void Update()

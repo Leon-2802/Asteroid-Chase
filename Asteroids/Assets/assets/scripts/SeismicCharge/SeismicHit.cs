@@ -16,7 +16,7 @@ public class SeismicHit : MonoBehaviour
             sprite.SetActive(false);
             SoundManager.sManagerInstance.Audio.PlayOneShot(SoundManager.sManagerInstance.seismicCharge);
             seismicCtrl.noHit = false;
-            seismicCtrl.lifetime = 0.1f;
+            seismicCtrl.currentLifetime = 0.1f;
         }
     }
 }

@@ -45,7 +45,7 @@ public class spaceShipHitPrc : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("target") && hit == false) {
+        if(other.CompareTag("target") && hit == false || other.CompareTag("enemyLaser") && hit == false) {
             hit = true;
             shipAnim.SetTrigger("Hit");
             currentHealth -= 20;
@@ -61,7 +61,7 @@ public class spaceShipHitPrc : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) 
     {
-        if(other.CompareTag("target") || other.CompareTag("smolTarget")) {
+        if(other.CompareTag("target") || other.CompareTag("smolTarget") || other.CompareTag("enemyLaser")) {
             hit = false;
             shipAnim.SetTrigger("NoHit");
         }

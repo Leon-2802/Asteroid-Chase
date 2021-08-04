@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 626749250606673776}
   - component: {fileID: 5380413887192146345}
   - component: {fileID: 7443612022044195460}
-  - component: {fileID: 733840204789557621}
+  - component: {fileID: 4599338273234602927}
   m_Layer: 0
   m_Name: Meteor-Smol
   m_TagString: smolTarget
@@ -165,7 +165,7 @@ MonoBehaviour:
   - -2
   - -3
   - -1.5
---- !u!114 &733840204789557621
+--- !u!114 &4599338273234602927
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,11 +174,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5318601483020179230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6c5196e525ccd47920d4b07ed81a21, type: 3}
+  m_Script: {fileID: 11500000, guid: 265c19ac51968a84f922224fed5a1fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: small
   maxHealth: 10
+  onDestroyTurret: {fileID: 0}
   diePrefab: 
   dieObjectCount: 0
   points: 3

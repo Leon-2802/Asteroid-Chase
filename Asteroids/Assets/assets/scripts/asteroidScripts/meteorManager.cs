@@ -49,6 +49,6 @@ public class meteorManager : MonoBehaviour
     }
 
     public void meteorRelocated(string tag) {
-        meteorPooler.meteorDestroyed(tag);
+        meteorPooler.ObjectDestroyed(tag);
     }
 }

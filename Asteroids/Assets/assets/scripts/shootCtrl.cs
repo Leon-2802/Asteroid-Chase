@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class shootCtrl : MonoBehaviour
 {
-    [SerializeField] private GameObject laser = null;
+    MeteorPooler meteorPooler;
+    [SerializeField] private string laser = null;
     [SerializeField] private Transform firePointL = null;
     [SerializeField] private GameObject seismicCharge = null;
     [SerializeField] private Transform seismicFirePoint = null;
@@ -17,12 +18,15 @@ public class shootCtrl : MonoBehaviour
     private float seismicRecharge = 5f;
     private bool canLaunch = true;
 
+    private void Start() {
+        meteorPooler = MeteorPooler.Instance;
+    }
     void Update()
     {
         if(Input.GetButton("Fire1") && canShoot == true) {
             recharge = 0.4f;
             canShoot = false;
-            Instantiate(laser, firePointL.position, firePointL.rotation);
+            meteorPooler.SpawnProjectileFromPool(laser, firePointL.position, firePointL.rotation);
         }
 
         // if(Input.touchCount > 0 && canShoot == true) {
@@ -42,9 +46,9 @@ public class shootCtrl : MonoBehaviour
             }
         }
 
-        if(Input.GetButtonDown("Fire2") && seismicCount > 0) {
-            launchCharge();
-        }
+        // if(Input.GetButtonDown("Fire2") && seismicCount > 0) {
+        //     launchCharge();
+        // }
         if(canLaunch == false) {
             seismicRecharge -= Time.deltaTime;
             if(seismicRecharge <= 0)
