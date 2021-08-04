@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public string objectTag;
+    public GameObject enemyManager;
     public DistanceChecker distanceChecker;
     public RotateTowards rotateTowards;
     public ShootAtTarget shootAtTarget;
@@ -18,4 +20,5 @@ public class Enemy : MonoBehaviour
     public bool targetSelected = false;
     public float attackRadius = 0f;
     public bool inRange = false;
+    public int points;
 }

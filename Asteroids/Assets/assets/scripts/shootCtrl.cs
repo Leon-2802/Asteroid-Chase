@@ -45,10 +45,7 @@ public class shootCtrl : MonoBehaviour
                 canShoot = true;
             }
         }
-
-        // if(Input.GetButtonDown("Fire2") && seismicCount > 0) {
-        //     launchCharge();
-        // }
+        
         if(canLaunch == false) {
             seismicRecharge -= Time.deltaTime;
             if(seismicRecharge <= 0)

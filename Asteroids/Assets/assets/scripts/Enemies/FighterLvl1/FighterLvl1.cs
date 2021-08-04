@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class FighterLvl1 : Enemy
 {
-    public int health;
     public EnemyHitPrc enemyHitPrc;
-    void Start() 
+    [SerializeField] private int maxHealth = 0;
+    public FighterMovement fighterMovement;
+    //Speziell für FighterLvl1-Movement:
+    [SerializeField] private float speed = 0f;
+    [SerializeField] private float moveInt = 0f;
+
+    void OnEnable() 
     {
         meteorPooler = MeteorPooler.Instance;
         target = GameObject.FindWithTag("Player").transform;
-    }
-    private void OnEnable() 
-    {
         rotateTowards = this.gameObject.AddComponent<RotateTowards>();
         rotateTowards.mainScript = this;
         shootAtTarget = this.gameObject.AddComponent<ShootAtTarget>();
         shootAtTarget.mainScript = this;
         enemyHitPrc = this.gameObject.AddComponent<EnemyHitPrc>();
         enemyHitPrc.mainScript = this;
+        enemyHitPrc.maxHealth = maxHealth;
+        fighterMovement = this.gameObject.AddComponent<FighterMovement>();
+        fighterMovement.mainScript = this;
+        fighterMovement.speed = speed;
+        fighterMovement.moveInt = moveInt;
     }
 }

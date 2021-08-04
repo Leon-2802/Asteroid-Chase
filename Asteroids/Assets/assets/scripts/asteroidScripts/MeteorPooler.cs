@@ -2,26 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorPooler : MonoBehaviour
+public class MeteorPooler : ObjectPooler
 {
-    [System.Serializable]
-    public class Pool
-    {
-        public string tag;
-        public GameObject prefab;
-        public int size;
-        public int numberOfActive;
-    }
-    public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
-
-    #region Singleton
-
     public static MeteorPooler Instance;
     
     private void Awake() 
     {
         Instance = this;
+
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         foreach (Pool pool in pools) {
@@ -37,7 +25,7 @@ public class MeteorPooler : MonoBehaviour
         }
     }
 
-    #endregion
+    protected override void Start() {}
 
     public GameObject spawnMeteorsFromPool (string tag, Vector3 pos, Quaternion rot) 
     {
@@ -108,13 +96,5 @@ public class MeteorPooler : MonoBehaviour
         poolDictionary[tag].Enqueue(objectToSpawn);
 
         return objectToSpawn;
-    }
-
-    public void ObjectDestroyed(string tag) 
-    {
-        foreach (Pool pool in pools) {
-            if(pool.tag == tag) 
-                pool.numberOfActive--;
-        }
     }
 }

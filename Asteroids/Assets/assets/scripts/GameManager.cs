@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
             }
     }
 
-    public void AsteroidDied(int points) {
+    public void GivePoints(int points) {
         scoreCounter += points;
         score.text = scoreCounter.ToString();
     }

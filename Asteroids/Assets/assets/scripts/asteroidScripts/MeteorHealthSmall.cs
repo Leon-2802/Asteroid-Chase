@@ -6,7 +6,7 @@ public class MeteorHealthSmall : meteorHealth
 {
     protected override void OnCollisionEnter2D(Collision2D other) 
     {
-        if(other.collider.CompareTag("laser")) 
+        if(other.collider.CompareTag("laser") || other.collider.CompareTag("enemyLaser")) 
             currentHealth -= 10;
     
         if(other.collider.CompareTag("seismic")) 
@@ -20,7 +20,7 @@ public class MeteorHealthSmall : meteorHealth
             }
         }
         meteorPooler.ObjectDestroyed(objectTag);
-        GameManager.instance.AsteroidDied(points);
+        GameManager.instance.GivePoints(points);
         this.gameObject.SetActive(false);
     }
 }

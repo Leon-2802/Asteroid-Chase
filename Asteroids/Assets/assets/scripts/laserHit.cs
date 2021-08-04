@@ -9,7 +9,7 @@ public class laserHit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("target") || other.CompareTag("smolTarget")) {
+        if(other.CompareTag("target") || other.CompareTag("enemy")) {
             laserCtrl.noHit = false;
             animator.SetTrigger("explode");
             laserCtrl.currentLifetime = 0.5f;

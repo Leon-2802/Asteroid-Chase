@@ -29,7 +29,7 @@ public class meteorHealth : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D other) 
     {
-        if(other.collider.CompareTag("laser")) {
+        if(other.collider.CompareTag("laser") || other.collider.CompareTag("enemyLaser")) {
             currentHealth -= 10;
             if(onDestroyTurret.gameObject.activeInHierarchy && healthSet == false)
                 SetMaxHealth();
@@ -53,9 +53,9 @@ public class meteorHealth : MonoBehaviour
             }
         }
         meteorPooler.ObjectDestroyed(objectTag);
-        GameManager.instance.AsteroidDied(points);
+        GameManager.instance.GivePoints(points);
         if(onDestroyTurret.gameObject.activeInHierarchy)
-            GameManager.instance.AsteroidDied(onDestroyTurret.points);
+            GameManager.instance.GivePoints(onDestroyTurret.points);
         this.gameObject.SetActive(false);
     }
 }

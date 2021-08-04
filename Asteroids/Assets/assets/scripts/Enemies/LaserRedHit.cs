@@ -13,5 +13,14 @@ public class LaserRedHit : MonoBehaviour
             animator.SetTrigger("explode");
             laserCtrl.currentLifetime = 0.5f;
         }
+        if(other.CompareTag("target")) {
+            if(other.gameObject.transform.childCount > 0 && other.gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
+                return;
+            else {
+                laserCtrl.noHit = false;
+                animator.SetTrigger("explode");
+                laserCtrl.currentLifetime = 0.5f;
+            }
+        }
     }
 }
