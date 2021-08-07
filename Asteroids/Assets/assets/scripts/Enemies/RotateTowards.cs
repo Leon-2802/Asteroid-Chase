@@ -5,14 +5,29 @@ using UnityEngine;
 public class RotateTowards : MonoBehaviour
 {
     public Enemy mainScript; 
+    public float pauseTime = 0.2f;
+    private bool startPause = false;
+    private float currentPauseTime;
+
+    private void Start() {
+        currentPauseTime = pauseTime;
+    }
     void Update()
     {
-        if(mainScript.inRange == true && mainScript.targetSelected == false)
+        if(mainScript.inRange == true && mainScript.targetSelected == false && startPause == false)
         {
             Vector2 lookdir = mainScript.target.position - mainScript.enemyPos.position;
             float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
             mainScript.enemyRb.rotation = angle;
-            mainScript.targetSelected = true;
+            startPause = true;
+        }
+        if(startPause == true) {
+            currentPauseTime -= Time.deltaTime;
+            if(currentPauseTime <= 0) {
+                startPause = false;
+                currentPauseTime = pauseTime;
+                mainScript.targetSelected = true;
+            }
         }
     }
 }

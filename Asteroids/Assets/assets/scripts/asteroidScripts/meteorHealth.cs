@@ -27,15 +27,19 @@ public class meteorHealth : MonoBehaviour
         }
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D other) 
-    {
-        if(other.collider.CompareTag("laser") || other.collider.CompareTag("enemyLaser")) {
-            currentHealth -= 10;
+    protected virtual void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("laser")) {
             if(onDestroyTurret.gameObject.activeInHierarchy && healthSet == false)
                 SetMaxHealth();
+            currentHealth -= 10;
+        }
+        if(other.CompareTag("enemyLaser")) {
+            if(onDestroyTurret.gameObject.activeInHierarchy)
+                return;
+            currentHealth -= 10;
         }
     
-        if(other.collider.CompareTag("seismic")) 
+        if(other.CompareTag("seismic") || other.CompareTag("missile")) 
             currentHealth = 0;
     }
 

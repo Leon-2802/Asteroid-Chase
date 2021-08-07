@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class laserRedCtrl : laserCtrl
 {
-    void Update()
+    protected override void Update()
     {
         if(noHit == true) {
             Vector3 newPosition = transform.position;

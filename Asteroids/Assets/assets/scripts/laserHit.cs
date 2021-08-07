@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class laserHit : MonoBehaviour
 {
-    public laserCtrl laserCtrl;
-    [SerializeField] private Animator animator = null;
+    [SerializeField] private laserCtrl laserCtrl = null;
+    [SerializeField] protected Animator animator = null;
+    // [SerializeField] protected BoxCollider2D noneTriggerCollider = null;
+    [SerializeField] protected BoxCollider2D triggerCollider = null;
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    protected void Start() 
+    {
+        triggerCollider.enabled = true;
+    }
+    protected void OnEnable() 
+    {
+        triggerCollider.enabled = true;
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.CompareTag("target") || other.CompareTag("enemy")) {
             laserCtrl.noHit = false;
             animator.SetTrigger("explode");
+            DisableColliders();
             laserCtrl.currentLifetime = 0.5f;
         }
+    }
+    protected void DisableColliders()
+    {
+        triggerCollider.enabled = false;
     }
 }

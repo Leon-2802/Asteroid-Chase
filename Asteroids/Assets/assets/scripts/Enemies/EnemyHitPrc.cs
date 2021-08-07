@@ -24,19 +24,32 @@ public class EnemyHitPrc : MonoBehaviour
     {
         if(currentHealth <= 0)
             Die();
+        if(gameManager.currentStage == GameManager.Stages.STAGE_2 && gameManager.leftoverKilled[0] == false) { //Kill remaining Missile Launcher after BossFight[0]
+            gameManager.leftoverKilled[0] = true; //!Nachprüfen!
+            Die();
+        }
     }
 
-    void OnCollisionEnter2D(Collision2D other) 
+    void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.collider.CompareTag("laser")) 
+        if(other.CompareTag("laser")) {
             currentHealth -= 10;
-        if(other.collider.CompareTag("seismic"))
+            mainScript.animator.SetTrigger("Hit");
+        }
+        if(other.CompareTag("seismic"))
             currentHealth = 0;
+    }
+    void OnTriggerExit2D(Collider2D other) 
+    {
+        if(other.CompareTag("laser")) 
+            mainScript.animator.SetTrigger("NoHit");
     }
 
     void Die()
     {
         gameManager.GivePoints(mainScript.points);
+        if(mainScript.objectTag == "MissileLauncher" && gameManager.currentStage == GameManager.Stages.STAGE_1)
+            gameManager.deadBossEnemies[0]++;
         enemyPooler.ObjectDestroyed(mainScript.objectTag);
         mainScript.gameObject.SetActive(false);
     }

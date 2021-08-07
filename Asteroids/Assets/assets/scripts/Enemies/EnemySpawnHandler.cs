@@ -7,11 +7,13 @@ public class EnemySpawnHandler : MonoBehaviour
     public EnemyManager mainScript;
     public string enemyPrefab;
     public Transform spawn;
+    public int maxNumber;
     public float spawnInt;
+    public float firstSpawn = 5f;
     private float activeSpawnInt;
     void Start()
     {
-        activeSpawnInt = spawnInt;
+        activeSpawnInt = firstSpawn;
     }
 
     void Update()
@@ -26,5 +28,9 @@ public class EnemySpawnHandler : MonoBehaviour
     void SpawnEnemy()
     {
         mainScript.enemyPooler.SpawnEnemiesFromPool(enemyPrefab, spawn.position, spawn.rotation);
+    }
+    public void ResetActiveSpawnInt()
+    {
+        activeSpawnInt = spawnInt;
     }
 }

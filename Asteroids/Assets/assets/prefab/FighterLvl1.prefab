@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6414182617207582904}
   - component: {fileID: 8760871288653225904}
   - component: {fileID: 6775125717453294641}
+  - component: {fileID: 1551199226943538261}
   m_Layer: 0
   m_Name: RigidbodyStuff
   m_TagString: Untagged
@@ -104,6 +105,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1551199226943538261
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2413991713294422204}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 40504203f927a7a48a7c354dac709674, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3918485563164314984
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +204,7 @@ MonoBehaviour:
   distanceChecker: {fileID: 0}
   rotateTowards: {fileID: 0}
   shootAtTarget: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 1551199226943538261}
   meteorPooler: {fileID: 0}
   projectilePrefab: laserRed
   projectileSpawn: {fileID: 5862828338997586509}
@@ -192,6 +212,7 @@ MonoBehaviour:
   enemyRb: {fileID: 8760871288653225904}
   target: {fileID: 0}
   shootIntervall: 1
+  pauseTimeAfterRotation: 0.2
   targetSelected: 0
   attackRadius: 0
   inRange: 1

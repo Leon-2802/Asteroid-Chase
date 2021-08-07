@@ -17,8 +17,10 @@ public class FighterLvl1 : Enemy
         target = GameObject.FindWithTag("Player").transform;
         rotateTowards = this.gameObject.AddComponent<RotateTowards>();
         rotateTowards.mainScript = this;
+        rotateTowards.pauseTime = pauseTimeAfterRotation;
         shootAtTarget = this.gameObject.AddComponent<ShootAtTarget>();
         shootAtTarget.mainScript = this;
+        shootAtTarget.shootInt = shootIntervall;
         enemyHitPrc = this.gameObject.AddComponent<EnemyHitPrc>();
         enemyHitPrc.mainScript = this;
         enemyHitPrc.maxHealth = maxHealth;

@@ -48,6 +48,7 @@ MonoBehaviour:
   objectTag: laserGreen
   speed: 25
   lifetime: 5
+  currentLifetime: 0
   noHit: 1
 --- !u!50 &5345457458120904
 Rigidbody2D:
@@ -80,7 +81,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5081389345892851929}
   - component: {fileID: 5810672852064000198}
-  - component: {fileID: 5351518928635752757}
   - component: {fileID: 8569367908129863377}
   - component: {fileID: 7140348234107344904}
   - component: {fileID: 4643258563672595348}
@@ -155,32 +155,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5351518928635752757
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288108728505780974}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.000000037252903, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.625, y: 0.125}
-    newSize: {x: 0.625, y: 0.125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.40316236, y: 0.125}
-  m_EdgeRadius: 0
 --- !u!95 &8569367908129863377
 Animator:
   serializedVersion: 3
@@ -240,3 +214,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserCtrl: {fileID: 2127831708004408500}
   animator: {fileID: 8569367908129863377}
+  triggerCollider: {fileID: 7140348234107344904}

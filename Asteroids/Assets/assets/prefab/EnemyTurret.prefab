@@ -264,6 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a601f7bca149c0945b3492814b74d591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectTag: 
+  enemyManager: {fileID: 0}
   distanceChecker: {fileID: 0}
   rotateTowards: {fileID: 0}
   shootAtTarget: {fileID: 0}
@@ -275,6 +277,8 @@ MonoBehaviour:
   enemyRb: {fileID: 2631069119655366567}
   target: {fileID: 0}
   shootIntervall: 1
+  pauseTimeAfterRotation: 0.1
   targetSelected: 0
   attackRadius: 18
   inRange: 0
+  points: 0

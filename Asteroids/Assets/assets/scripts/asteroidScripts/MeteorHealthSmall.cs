@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MeteorHealthSmall : meteorHealth
 {
-    protected override void OnCollisionEnter2D(Collision2D other) 
+    protected override void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.collider.CompareTag("laser") || other.collider.CompareTag("enemyLaser")) 
+        if(other.CompareTag("laser") || other.CompareTag("enemyLaser")) 
             currentHealth -= 10;
     
-        if(other.collider.CompareTag("seismic")) 
+        if(other.CompareTag("seismic") || other.CompareTag("missile")) 
             currentHealth = 0;
     }
     protected override void Die() 

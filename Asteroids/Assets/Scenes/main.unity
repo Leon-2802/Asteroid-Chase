@@ -5024,6 +5024,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0cc0b24228aeac47ae4295e6c8195f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStage: 0
+  bossFightStarts: 1400000058020000
+  bossFight: 00
+  deadBossEnemies: 00000000
+  bossDefeated: 00
+  leftoverKilled: 00
+  scoreCounter: 0
   score: {fileID: 1681937929}
   timer: {fileID: 1746748088}
 --- !u!4 &83213043
@@ -5134,7 +5141,8 @@ MonoBehaviour:
   - {fileID: 1651752041}
   - {fileID: 1307933917}
   - {fileID: 973235051}
-  spawnTime: 15
+  spawnTime: 10
+  bossPhase: 0
 --- !u!4 &165019160
 Transform:
   m_ObjectHideFlags: 0
@@ -5211,6 +5219,17 @@ MonoBehaviour:
       type: 3}
     size: 100
     numberOfActive: 0
+  - tag: missile
+    prefab: {fileID: 8102167488103081731, guid: e6effc9d67e9dde4a950f51a4e1e6991,
+      type: 3}
+    size: 10
+    numberOfActive: 0
+  - tag: seismic
+    prefab: {fileID: 8450384051958314369, guid: 246e680aa33b44f499df5d714cc7b4dd,
+      type: 3}
+    size: 3
+    numberOfActive: 0
+  player: {fileID: 1604149383}
 --- !u!1 &165781835
 GameObject:
   m_ObjectHideFlags: 0
@@ -5307,6 +5326,36 @@ Transform:
   m_Father: {fileID: 165019160}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &240414845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240414846}
+  m_Layer: 0
+  m_Name: MissileLauncherSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &240414846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240414845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.6, y: 2.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1515127369}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &312159065
 GameObject:
   m_ObjectHideFlags: 0
@@ -5377,7 +5426,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 73c8eb9fc4863284fa75e8d01f94a20e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.607
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6505,6 +6554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 844393448}
+  - {fileID: 240414846}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6526,6 +6576,11 @@ MonoBehaviour:
       type: 3}
     size: 4
     numberOfActive: 0
+  - tag: MissileLauncher
+    prefab: {fileID: 6983371716444893480, guid: 9f497361bca47c24b83e266b1a5b1f0d,
+      type: 3}
+    size: 3
+    numberOfActive: 0
 --- !u!114 &1515127371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6541,10 +6596,16 @@ MonoBehaviour:
   enemyPooler: {fileID: 0}
   enemyPrefabs:
   - FighterLvl1
+  - MissileLauncher
   spawns:
   - {fileID: 844393448}
+  - {fileID: 240414846}
   fighterLvl1Spawner: {fileID: 0}
-  fighterLvl1SpawnInt: 50
+  fighterLvl1SpawnInt: 40
+  missileLauncherSpawner: {fileID: 0}
+  missileMaxNumber: 3
+  missileBossSpawnInt: 8
+  missileLauchnerSpawnInt: 50
 --- !u!1 &1549846239
 GameObject:
   m_ObjectHideFlags: 0
@@ -6955,7 +7016,11 @@ MonoBehaviour:
   - {fileID: 1389470407}
   - {fileID: 1069280848}
   greyHeart: {fileID: 21300000, guid: db9f57117d79ff74583497118722bf97, type: 3}
-  maxHealth: 150
+  damageAsteroid: 20
+  damageSmallAsteroidLaser: 10
+  damageMissile: 20
+  maxHealth: 1150
+  currentHealth: 0
 --- !u!1 &1651752040
 GameObject:
   m_ObjectHideFlags: 0

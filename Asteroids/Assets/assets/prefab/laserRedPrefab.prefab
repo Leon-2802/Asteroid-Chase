@@ -239,5 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92970576b1b75f4fb83fe1435d8076e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserCtrl: {fileID: 5999942115871015173}
+  laserCtrl: {fileID: 0}
   animator: {fileID: 1542264820775413737}
+  triggerCollider: {fileID: 43954044164524336}
+  laserRedCtrl: {fileID: 5999942115871015173}

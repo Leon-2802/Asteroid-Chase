@@ -20,7 +20,7 @@ public class laserCtrl : MonoBehaviour
         currentLifetime = lifetime;
         noHit = true;
     }
-    void Update()
+    protected virtual void Update()
     {
         if(noHit == true) {
             Vector3 newPosition = transform.position;

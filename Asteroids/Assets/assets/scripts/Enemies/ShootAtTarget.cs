@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShootAtTarget : MonoBehaviour
 {
     public Enemy mainScript;
-    private bool canShoot = true;
-    private float shootInt;
+    public float shootInt;
+    private bool canShoot = false;
     // private float backToIdle = 0.5f;
     void Update()
     {
@@ -29,7 +29,7 @@ public class ShootAtTarget : MonoBehaviour
         }
     }
 
-    void shoot()
+    protected virtual void shoot()
     {
         canShoot = false;
         // backToIdle = 0.5f;

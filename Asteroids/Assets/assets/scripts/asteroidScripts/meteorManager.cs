@@ -5,13 +5,16 @@ using UnityEngine;
 public class meteorManager : MonoBehaviour
 {
     MeteorPooler meteorPooler;
+    GameManager gameManager;
     [SerializeField] private string[] meteorPrefabs = null;
     [SerializeField] private Transform[] spawns = null;
     [SerializeField] private float spawnTime = 0f;
+    [SerializeField] private bool bossPhase = false;
     private float spawnInterval;
 
     void Start() {
         meteorPooler = MeteorPooler.Instance;
+        gameManager = GameManager.instance;
         spawnInterval = spawnTime;
 
         for(int i = 0; i < 4; i++) {
@@ -21,12 +24,24 @@ public class meteorManager : MonoBehaviour
 
     void Update()
     {
-        spawnInterval -= Time.deltaTime;
-        if(spawnInterval <= 0) {
-            spawnInterval = spawnTime;
-            for(int i = 0; i < 1; i++) { 
+        CheckForBossFight();
+        if(bossPhase == false) 
+        {
+            spawnInterval -= Time.deltaTime;
+            if(spawnInterval <= 0) {
+                spawnInterval = spawnTime;
                 spawnMeteor();
             }
+        }
+    }
+
+    void CheckForBossFight()
+    {
+        for(int i = 0; i < gameManager.bossFight.Length; i++) {
+            if(gameManager.bossFight[i] == true) 
+                bossPhase = true;
+            else
+                bossPhase = false;
         }
     }
 

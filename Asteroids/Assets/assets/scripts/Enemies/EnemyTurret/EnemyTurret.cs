@@ -6,7 +6,6 @@ public class EnemyTurret : Enemy
 {
     void Start() {
         meteorPooler = MeteorPooler.Instance;
-        target = GameObject.FindWithTag("Player").transform;
     }
     
     void OnEnable()
@@ -15,6 +14,7 @@ public class EnemyTurret : Enemy
         distanceChecker.mainScript = this;
         rotateTowards = this.gameObject.AddComponent<RotateTowards>();
         rotateTowards.mainScript = this;
+        rotateTowards.pauseTime = pauseTimeAfterRotation;
         shootAtTarget = this.gameObject.AddComponent<ShootAtTarget>();
         shootAtTarget.mainScript = this;
     }

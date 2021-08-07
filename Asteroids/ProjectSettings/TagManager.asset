@@ -12,6 +12,7 @@ TagManager:
   - enemyLaser
   - EnemyManager
   - enemy
+  - missile
   layers:
   - Default
   - TransparentFX

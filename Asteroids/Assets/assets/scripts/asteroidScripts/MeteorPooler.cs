@@ -5,6 +5,7 @@ using UnityEngine;
 public class MeteorPooler : ObjectPooler
 {
     public static MeteorPooler Instance;
+    [SerializeField] private Transform player = null;
     
     private void Awake() 
     {
@@ -59,6 +60,7 @@ public class MeteorPooler : ObjectPooler
             int zufall = Random.Range(0, 8);
             if(zufall == 2) {
                 objectToSpawn.transform.GetChild(0).gameObject.SetActive(true);
+                objectToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<EnemyTurret>().target = player;
                 objectToSpawn.GetComponent<SpriteRenderer>().sortingLayerName = "TurretAsteroids";
             }
         }
