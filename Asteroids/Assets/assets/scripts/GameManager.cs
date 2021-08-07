@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     public bool[] bossFight;
     public int[] deadBossEnemies;
     public bool[] bossDefeated;
-    public bool[] leftoverKilled;
 
     //Score
     public int scoreCounter = 0;

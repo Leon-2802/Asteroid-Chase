@@ -58,6 +58,7 @@ public class EnemyManager : MonoBehaviour
             break;
             case GameManager.Stages.STAGE_2:
                 missileLauncherSpawner.spawnInt = missileLauchnerSpawnInt;
+                missileLauncherSpawner.enabled = false;
                 // missileLauncherSpawner.ResetActiveSpawnInt();
                 fighterLvl1Spawner.enabled = true;
             break;

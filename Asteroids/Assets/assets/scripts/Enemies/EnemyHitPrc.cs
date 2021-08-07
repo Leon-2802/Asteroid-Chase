@@ -24,10 +24,8 @@ public class EnemyHitPrc : MonoBehaviour
     {
         if(currentHealth <= 0)
             Die();
-        if(gameManager.currentStage == GameManager.Stages.STAGE_2 && gameManager.leftoverKilled[0] == false) { //Kill remaining Missile Launcher after BossFight[0]
-            gameManager.leftoverKilled[0] = true; //!Nachprüfen!
+        if(gameManager.currentStage == GameManager.Stages.STAGE_2 && mainScript.objectTag == "MissileLauncher") //Kill remaining Missile Launchers after BossFight[0]
             Die();
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other) 

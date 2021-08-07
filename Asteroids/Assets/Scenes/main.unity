@@ -5029,7 +5029,6 @@ MonoBehaviour:
   bossFight: 00
   deadBossEnemies: 00000000
   bossDefeated: 00
-  leftoverKilled: 00
   scoreCounter: 0
   score: {fileID: 1681937929}
   timer: {fileID: 1746748088}
@@ -5426,7 +5425,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 73c8eb9fc4863284fa75e8d01f94a20e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.607
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6605,7 +6604,7 @@ MonoBehaviour:
   missileLauncherSpawner: {fileID: 0}
   missileMaxNumber: 3
   missileBossSpawnInt: 8
-  missileLauchnerSpawnInt: 50
+  missileLauchnerSpawnInt: 60
 --- !u!1 &1549846239
 GameObject:
   m_ObjectHideFlags: 0
@@ -6941,8 +6940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laser: laserGreen
   firePointL: {fileID: 1906110077}
-  seismicCharge: {fileID: 8450384051958314369, guid: 246e680aa33b44f499df5d714cc7b4dd,
-    type: 3}
+  seismicCharge: seismic
   seismicFirePoint: {fileID: 1549846240}
   seismicCount: 5
 --- !u!95 &1604149386
@@ -7019,7 +7017,7 @@ MonoBehaviour:
   damageAsteroid: 20
   damageSmallAsteroidLaser: 10
   damageMissile: 20
-  maxHealth: 1150
+  maxHealth: 250
   currentHealth: 0
 --- !u!1 &1651752040
 GameObject:

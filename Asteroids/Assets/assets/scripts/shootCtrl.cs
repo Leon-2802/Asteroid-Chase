@@ -7,7 +7,7 @@ public class shootCtrl : MonoBehaviour
     MeteorPooler meteorPooler;
     [SerializeField] private string laser = null;
     [SerializeField] private Transform firePointL = null;
-    [SerializeField] private GameObject seismicCharge = null;
+    [SerializeField] private string seismicCharge = null;
     [SerializeField] private Transform seismicFirePoint = null;
     private Touch touch;
 
@@ -58,7 +58,7 @@ public class shootCtrl : MonoBehaviour
          if(seismicCount > 0 && canLaunch == true) {
             seismicRecharge = 5f;
             canLaunch = false;
-            Instantiate(seismicCharge, seismicFirePoint.position, seismicFirePoint.rotation);
+            meteorPooler.SpawnProjectileFromPool(seismicCharge, seismicFirePoint.position, seismicFirePoint.rotation);
             seismicCount--;
         }
     }

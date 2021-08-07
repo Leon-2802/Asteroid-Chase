@@ -15,7 +15,8 @@ public class SeismicChargeCtrl : laserCtrl
         currentLifetime -= Time.deltaTime;
 
         if(currentLifetime <= 0f) {
-            Destroy(this.gameObject);
+            meteorPooler.ObjectDestroyed(objectTag);
+            this.gameObject.SetActive(false);
         }
     }
 }
