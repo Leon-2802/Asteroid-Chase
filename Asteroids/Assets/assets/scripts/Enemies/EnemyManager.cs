@@ -15,7 +15,7 @@ public class EnemyManager : MonoBehaviour
 
     //MissileLauncher:
     [SerializeField] private EnemySpawnHandler missileLauncherSpawner;
-    public int missileMaxNumber = 3;
+    // public int missileMaxNumber = 3;
     [SerializeField] private float missileBossSpawnInt = 0f;
     [SerializeField] private float missileLauchnerSpawnInt = 0f;
 

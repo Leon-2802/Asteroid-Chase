@@ -9,6 +9,7 @@ public class EnemyHitPrc : MonoBehaviour
     [SerializeField] private EnemyPooler enemyPooler;
     public int maxHealth;
     [SerializeField] private int currentHealth;
+    public string explosion;
 
     void Start() 
     {
@@ -49,6 +50,8 @@ public class EnemyHitPrc : MonoBehaviour
         if(mainScript.objectTag == "MissileLauncher" && gameManager.currentStage == GameManager.Stages.STAGE_1)
             gameManager.deadBossEnemies[0]++;
         enemyPooler.ObjectDestroyed(mainScript.objectTag);
+        enemyPooler.SpawnEnemiesFromPool(explosion, mainScript.enemyPos.position, mainScript.enemyPos.rotation);
+        enemyPooler.ObjectDestroyed(explosion);
         mainScript.gameObject.SetActive(false);
     }
 }

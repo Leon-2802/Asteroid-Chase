@@ -9,7 +9,7 @@ public class RotateTowards : MonoBehaviour
     private bool startPause = false;
     private float currentPauseTime;
 
-    private void Start() {
+    void OnEnable() {
         currentPauseTime = pauseTime;
     }
     void Update()

@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public MeteorPooler meteorPooler;
     public string projectilePrefab;
     public Transform projectileSpawn;
+    [SerializeField] protected string explosion = null;
     public Transform enemyPos;
     public Rigidbody2D enemyRb;
     public Transform target;

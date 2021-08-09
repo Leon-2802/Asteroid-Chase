@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6983371716444893485}
   m_Layer: 0
   m_Name: MissileLauncher
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,15 +70,16 @@ MonoBehaviour:
   meteorPooler: {fileID: 0}
   projectilePrefab: missile
   projectileSpawn: {fileID: 6983371717442881126}
+  explosion: ExplosionSmall
   enemyPos: {fileID: 6983371716444893486}
   enemyRb: {fileID: 6983371716477164411}
   target: {fileID: 0}
-  shootIntervall: 5
+  shootIntervall: 3
   pauseTimeAfterRotation: 0.1
   targetSelected: 0
   attackRadius: 0
   inRange: 1
-  points: 15
+  points: 20
   enemyHitPrc: {fileID: 0}
   shootAtTargetMissile: {fileID: 0}
   movement: {fileID: 0}

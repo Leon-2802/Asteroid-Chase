@@ -273,11 +273,12 @@ MonoBehaviour:
   meteorPooler: {fileID: 0}
   projectilePrefab: laserRed
   projectileSpawn: {fileID: 4769961543805325308}
+  explosion: 
   enemyPos: {fileID: 753038418441690719}
   enemyRb: {fileID: 2631069119655366567}
   target: {fileID: 0}
   shootIntervall: 1
-  pauseTimeAfterRotation: 0.1
+  pauseTimeAfterRotation: 0.3
   targetSelected: 0
   attackRadius: 18
   inRange: 0

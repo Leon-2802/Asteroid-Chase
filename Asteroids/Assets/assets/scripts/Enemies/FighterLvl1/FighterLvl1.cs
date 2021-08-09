@@ -24,6 +24,7 @@ public class FighterLvl1 : Enemy
         enemyHitPrc = this.gameObject.AddComponent<EnemyHitPrc>();
         enemyHitPrc.mainScript = this;
         enemyHitPrc.maxHealth = maxHealth;
+        enemyHitPrc.explosion = explosion;
         fighterMovement = this.gameObject.AddComponent<FighterMovement>();
         fighterMovement.mainScript = this;
         fighterMovement.speed = speed;

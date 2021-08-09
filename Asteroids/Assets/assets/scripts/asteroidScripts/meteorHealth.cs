@@ -11,6 +11,7 @@ public class meteorHealth : MonoBehaviour
     [SerializeField] protected int currentHealth = 0;
     public OnDestroyTurret onDestroyTurret;
     [SerializeField] protected string diePrefab = null;
+    [SerializeField] protected string explosion = null;
     [SerializeField] protected int dieObjectCount = 4;
     [SerializeField] protected int points = 1;
 
@@ -51,6 +52,8 @@ public class meteorHealth : MonoBehaviour
 
     protected virtual void Die() 
     {
+        meteorPooler.SpawnProjectileFromPool(explosion, transform.position, transform.rotation);
+        meteorPooler.ObjectDestroyed(explosion);
         if(diePrefab != null) {
             for(int i = 0; i < dieObjectCount; i++) {
                 meteorPooler.spawnMeteorsFromPool(diePrefab, transform.position, transform.rotation);

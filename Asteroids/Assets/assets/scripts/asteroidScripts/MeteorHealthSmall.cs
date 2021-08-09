@@ -14,6 +14,8 @@ public class MeteorHealthSmall : meteorHealth
     }
     protected override void Die() 
     {
+        meteorPooler.SpawnProjectileFromPool(explosion, transform.position, transform.rotation);
+        meteorPooler.ObjectDestroyed(explosion);
         if(diePrefab != null) {
             for(int i = 0; i < dieObjectCount; i++) {
                 meteorPooler.spawnMeteorsFromPool(diePrefab, transform.position, transform.rotation);

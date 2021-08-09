@@ -134,5 +134,6 @@ MonoBehaviour:
   currentHealth: 0
   onDestroyTurret: {fileID: 0}
   diePrefab: small
+  explosion: explosionMedium
   dieObjectCount: 2
   points: 2

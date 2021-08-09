@@ -11,7 +11,7 @@ public class SeismicHit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("target") || other.CompareTag("laser")) {
+        if(other.CompareTag("target") || other.CompareTag("laser") || other.CompareTag("enemy")) {
             hitSphere.SetActive(true);
             sprite.SetActive(false);
             SoundManager.sManagerInstance.Audio.PlayOneShot(SoundManager.sManagerInstance.seismicCharge);
