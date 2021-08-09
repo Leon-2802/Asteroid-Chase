@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 6983371716444893486}
   - component: {fileID: 6983371716444893487}
   - component: {fileID: 6983371716444893485}
+  - component: {fileID: -1934443660877014678}
+  - component: {fileID: 5966522765451950574}
+  - component: {fileID: 2010097097033213644}
+  - component: {fileID: -527867562133521959}
   m_Layer: 0
   m_Name: MissileLauncher
   m_TagString: enemy
@@ -81,10 +85,72 @@ MonoBehaviour:
   inRange: 1
   points: 20
   enemyHitPrc: {fileID: 0}
-  shootAtTargetMissile: {fileID: 0}
-  movement: {fileID: 0}
+  shootAtTargetMissile: {fileID: 5966522765451950574}
+  movement: {fileID: 2010097097033213644}
   maxHealth: 60
   speed: 14
+--- !u!114 &-1934443660877014678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983371716444893480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fd170f2e997ac48999e14d40324aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 6983371716444893485}
+  pauseTime: 0.1
+--- !u!114 &5966522765451950574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983371716444893480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0fe7b35ac8c754291695db20b5a5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 6983371716444893485}
+  shootInt: 3
+  shot: 0
+--- !u!114 &2010097097033213644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983371716444893480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6233003c0526e4d92fc669eb336191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 6983371716444893485}
+  target: {x: 0, y: 0, z: 0}
+  speed: 14
+--- !u!114 &-527867562133521959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983371716444893480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a013e5abbf2f9ae469ba415822641964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 6983371716444893485}
+  gameManager: {fileID: 0}
+  enemyPooler: {fileID: 0}
+  maxHealth: 60
+  currentHealth: 0
+  explosion: ExplosionSmall
 --- !u!1 &6983371716477164406
 GameObject:
   m_ObjectHideFlags: 0

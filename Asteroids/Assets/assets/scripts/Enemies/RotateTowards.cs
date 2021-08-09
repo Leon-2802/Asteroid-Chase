@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RotateTowards : MonoBehaviour
 {
-    public Enemy mainScript; 
-    public float pauseTime = 0.2f;
+    [SerializeField] private Enemy mainScript = null; 
+    [SerializeField] private float pauseTime = 0.2f;
     private bool startPause = false;
     private float currentPauseTime;
 

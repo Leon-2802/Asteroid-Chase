@@ -4,37 +4,19 @@ using UnityEngine;
 
 public class MissileLauncher : Enemy
 {
-    public EnemyHitPrc enemyHitPrc;
-    public ShootAtTargetMissile shootAtTargetMissile;
-    public FlyTowardsMovement movement;
-    [SerializeField] private int maxHealth = 0;
-    [SerializeField] private float speed = 0f;
+    [SerializeField] private ShootAtTargetMissile shootAtTargetMissile = null;
+    [SerializeField] private FlyTowardsMovement movement = null;
+    [SerializeField] private shipController shipController;
 
-    private void Start() {
+    void Awake() {
+        shipController = shipController.instance;
         meteorPooler = MeteorPooler.Instance;
-        target = GameObject.FindWithTag("Player").transform;
-
-        rotateTowards = this.gameObject.AddComponent<RotateTowards>();
-        rotateTowards.mainScript = this;
-        rotateTowards.pauseTime = pauseTimeAfterRotation;
-
-        shootAtTargetMissile = this.gameObject.AddComponent<ShootAtTargetMissile>();
-        shootAtTargetMissile.mainScript = this;
-        shootAtTargetMissile.shootInt = shootIntervall;
-
-        enemyHitPrc = this.gameObject.AddComponent<EnemyHitPrc>();
-        enemyHitPrc.mainScript = this;
-        enemyHitPrc.maxHealth = maxHealth;
-        enemyHitPrc.explosion = explosion;
-
-        movement = this.gameObject.AddComponent<FlyTowardsMovement>();
-        movement.mainScript = this;
-        movement.target = target.position;
-        movement.speed = speed;
+        target = shipController.gameObject.transform;
     }
-    // void OnEnable() 
-    // {
-    // }
+    void OnEnable() 
+    {
+        movement.target = target.position;
+    }
 
     void Update() 
     {

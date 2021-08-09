@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class EnemyTurret : Enemy
 {
-    void Start() {
+    [SerializeField] private SpriteRenderer spriteRenderer = null;
+    [SerializeField] private Sprite baseNormal = null;
+    [SerializeField] private Sprite baseShooting = null;
+    void Start() 
+    {
         meteorPooler = MeteorPooler.Instance;
     }
-    
-    void OnEnable()
+
+    void Update() 
     {
-        distanceChecker = this.gameObject.AddComponent<DistanceChecker>();
-        distanceChecker.mainScript = this;
-        rotateTowards = this.gameObject.AddComponent<RotateTowards>();
-        rotateTowards.mainScript = this;
-        rotateTowards.pauseTime = pauseTimeAfterRotation;
-        shootAtTarget = this.gameObject.AddComponent<ShootAtTarget>();
-        shootAtTarget.mainScript = this;
+        if(inRange == false) {
+            spriteRenderer.sprite = baseNormal;
+        }
+        else {
+            spriteRenderer.sprite = baseShooting;
+        }
     }
 }

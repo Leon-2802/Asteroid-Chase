@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FighterMovement : MonoBehaviour
 {
-    public Enemy mainScript;
-    public float speed = 0f;
-    public float moveInt = 0f;
+    [SerializeField] private Enemy mainScript = null;
+    [SerializeField] private float speed = 0f;
+    [SerializeField] private float moveInt = 0f;
     private int anchorsIndex;
     private float currentMoveInt;
 

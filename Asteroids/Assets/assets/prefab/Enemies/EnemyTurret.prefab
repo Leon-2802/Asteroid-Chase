@@ -140,6 +140,9 @@ GameObject:
   - component: {fileID: 2631069119655366567}
   - component: {fileID: 2102469723309124292}
   - component: {fileID: 7134673252610246234}
+  - component: {fileID: 5565759108105103530}
+  - component: {fileID: 2849467932640749285}
+  - component: {fileID: 3791035686572866390}
   m_Layer: 0
   m_Name: Rotator
   m_TagString: Untagged
@@ -265,21 +268,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: 
-  enemyManager: {fileID: 0}
-  distanceChecker: {fileID: 0}
-  rotateTowards: {fileID: 0}
-  shootAtTarget: {fileID: 0}
   animator: {fileID: 2102469723309124292}
   meteorPooler: {fileID: 0}
   projectilePrefab: laserRed
   projectileSpawn: {fileID: 4769961543805325308}
-  explosion: 
   enemyPos: {fileID: 753038418441690719}
   enemyRb: {fileID: 2631069119655366567}
   target: {fileID: 0}
-  shootIntervall: 1
-  pauseTimeAfterRotation: 0.3
   targetSelected: 0
-  attackRadius: 18
   inRange: 0
   points: 0
+  spriteRenderer: {fileID: 2412080791347549271}
+  baseNormal: {fileID: 21300000, guid: acb57d56b81f348469f6b9941dc54ee2, type: 3}
+  baseShooting: {fileID: 21300000, guid: 60b3ae802b8417b4bbf036376760d33e, type: 3}
+--- !u!114 &5565759108105103530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524230449307363963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13bea85b5df78ea4899eafc00101044c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 7134673252610246234}
+  attackRadius: 18
+--- !u!114 &2849467932640749285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524230449307363963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fd170f2e997ac48999e14d40324aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 7134673252610246234}
+  pauseTime: 0.3
+--- !u!114 &3791035686572866390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524230449307363963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6aa984954cba414c8a019321f6f2734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 7134673252610246234}
+  shootInt: 1

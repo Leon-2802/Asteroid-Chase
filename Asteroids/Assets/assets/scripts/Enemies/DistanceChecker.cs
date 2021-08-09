@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DistanceChecker : MonoBehaviour
 {
-    public Enemy mainScript;
+    [SerializeField] private Enemy mainScript = null;
+    [SerializeField] private float attackRadius = 0f;
 
     void Update()
     {
-        if(Vector2.Distance(mainScript.target.position, mainScript.enemyPos.position) < mainScript.attackRadius)
+        if(Vector2.Distance(mainScript.target.position, mainScript.enemyPos.position) < attackRadius)
             mainScript.inRange = true;
         else
             mainScript.inRange = false;

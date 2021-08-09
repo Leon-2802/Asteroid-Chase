@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyHitPrc : MonoBehaviour
 {
-    public Enemy mainScript;
-    [SerializeField] private GameManager gameManager;
-    [SerializeField] private EnemyPooler enemyPooler;
-    public int maxHealth;
-    [SerializeField] private int currentHealth;
-    public string explosion;
+    [SerializeField] private Enemy mainScript = null;
+    [SerializeField] private GameManager gameManager = null;
+    [SerializeField] private EnemyPooler enemyPooler = null;
+    [SerializeField] private int maxHealth = 0;
+    [SerializeField] private int currentHealth = 0;
+    [SerializeField] private string explosion = null;
 
     void Start() 
     {

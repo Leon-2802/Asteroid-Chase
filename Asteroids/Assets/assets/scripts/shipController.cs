@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class shipController : MonoBehaviour
 {
+    public static shipController instance;
     [SerializeField] private float speed = 5f;
     [SerializeField] private Rigidbody2D rb = null;
     [SerializeField] private FixedJoystick joystickL = null;
     [SerializeField] private FixedJoystick joystickR = null;
 
-    [SerializeField] private Camera cam = null;
+    // [SerializeField] private Camera cam = null;
 
     private Vector2 movement;
     private Vector2 mousePos;
-    void Start()
+    void Awake()
     {
-        
+        instance = this;
     }
 
     void Update()
@@ -26,7 +27,7 @@ public class shipController : MonoBehaviour
         float moveY = joystickL.Vertical;
         movement = new Vector2(moveX, moveY).normalized;
 
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        // mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         if(transform.position.x < -18.10f) {
             Vector3 newPos = transform.position;

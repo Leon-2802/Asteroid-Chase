@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d73a40cae4f8243ae20c0372432b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectTag: 
+  objectTag: seismic
   speed: 5
   lifetime: 5
   currentLifetime: 0
@@ -256,5 +256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seismicCtrl: {fileID: -3652910382580565734}
+  explosion: seismicExplosion
   hitSphere: {fileID: 5476740863777688249}
   sprite: {fileID: 1138309944662974682}

@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserCtrl: {fileID: 8102167488103081757}
+  explosion: MissileExplosion
   boxCollider2D: {fileID: 3319953881817495428}
 --- !u!61 &3319953881817495428
 BoxCollider2D:

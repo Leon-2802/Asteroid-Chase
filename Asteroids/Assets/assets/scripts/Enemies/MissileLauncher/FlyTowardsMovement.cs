@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class FlyTowardsMovement : MonoBehaviour
 {
-    public Enemy mainScript;
+    [SerializeField] private Enemy mainScript = null;
     // public bool canMove = false;
     public Vector3 target;
     private Vector3 moving;
-    public float speed = 0f;
+    [SerializeField] private float speed = 0f;
     private float moveInt = 0.3f;
     private float currentMoveInt;
 

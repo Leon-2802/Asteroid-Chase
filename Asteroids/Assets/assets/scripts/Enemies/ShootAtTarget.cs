@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class ShootAtTarget : MonoBehaviour
 {
-    public Enemy mainScript;
-    public float shootInt;
-    private bool canShoot = false;
-    // private float backToIdle = 0.5f;
+    [SerializeField] protected Enemy mainScript = null;
+    [SerializeField] protected float shootInt = 0;
+    protected float currentShootInt;
+    protected bool canShoot = false;
+
     void Update()
     {
         if(mainScript.targetSelected == true && canShoot == true) 
         {
-            shootInt = mainScript.shootIntervall;
+            currentShootInt = shootInt;
             shoot();
-            // backToIdle -= Time.deltaTime;
-            // if(backToIdle <= 0)
-            //     mainScript.animator.SetTrigger("Idle");
         }
         
         if(canShoot == false)
         {
-            shootInt -= Time.deltaTime;
-             if(shootInt <= 0) {
+            currentShootInt -= Time.deltaTime;
+             if(currentShootInt <= 0) {
                 mainScript.targetSelected = false;
                 canShoot = true;
              }
@@ -32,8 +30,6 @@ public class ShootAtTarget : MonoBehaviour
     protected virtual void shoot()
     {
         canShoot = false;
-        // backToIdle = 0.5f;
-        // mainScript.animator.SetTrigger("Shot");
         mainScript.meteorPooler.SpawnProjectileFromPool(mainScript.projectilePrefab, mainScript.projectileSpawn.position, mainScript.projectileSpawn.rotation);
     }
 }
