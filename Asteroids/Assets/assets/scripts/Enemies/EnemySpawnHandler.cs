@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EnemySpawnHandler : MonoBehaviour
 {
-    public EnemyManager mainScript;
-    public string enemyPrefab;
-    public Transform spawn;
-    public int maxNumber;
+    [SerializeField] private EnemyManager mainScript = null;
+    [SerializeField] private string enemyPrefab = "";
+    [SerializeField] private Transform[] spawns = null;
     public float spawnInt;
-    public float firstSpawn = 5f;
+    [SerializeField] private float firstSpawn = 5f;
     private float activeSpawnInt;
     void Start()
     {
@@ -27,7 +26,8 @@ public class EnemySpawnHandler : MonoBehaviour
 
     void SpawnEnemy()
     {
-        mainScript.enemyPooler.SpawnEnemiesFromPool(enemyPrefab, spawn.position, spawn.rotation);
+        int spawnIndex = UnityEngine.Random.Range(0, spawns.Length);
+        mainScript.enemyPooler.SpawnEnemiesFromPool(enemyPrefab, spawns[spawnIndex].position, spawns[spawnIndex].rotation);
     }
     public void ResetActiveSpawnInt()
     {

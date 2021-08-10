@@ -20,7 +20,7 @@ public class laserHit : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("target") || other.CompareTag("enemy")) {
+        if(other.CompareTag("target") || other.CompareTag("enemy") || other.CompareTag("smolTarget")) {
             laserCtrl.noHit = false;
             animator.SetTrigger("explode");
             DisableColliders();

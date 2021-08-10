@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class FighterLvl2 : Fighter
 {
-    
-    void Start()
+    [SerializeField] private ShootAtTargetTwice shootScript = null;
+    [SerializeField] private CrossMovement moveScript = null;
+    [SerializeField] private float stopInt = 0f;
+    private float currentStopInt;
+
+    void OnEnable() 
     {
-        
+        currentStopInt = stopInt;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(shootScript.shot == true) 
+        {
+            moveScript.move = true;
+            currentStopInt -= Time.deltaTime;
+            if(currentStopInt <= 0) {
+                moveScript.move = false;
+                currentStopInt = stopInt;
+                shootScript.shot = false;
+            } 
+        }
     }
 }

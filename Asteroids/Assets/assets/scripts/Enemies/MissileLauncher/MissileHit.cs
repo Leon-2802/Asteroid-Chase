@@ -18,7 +18,7 @@ public class MissileHit : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("Player") || other.CompareTag("target")) {
+        if(other.CompareTag("Player") || other.CompareTag("target") || other.CompareTag("smolTarget")) {
             DisableCollider();
             enemyPooler.SpawnEnemiesFromPool(explosion, transform.position, transform.rotation);
             enemyPooler.ObjectDestroyed(explosion);
