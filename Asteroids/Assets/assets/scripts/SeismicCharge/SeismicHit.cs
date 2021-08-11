@@ -24,7 +24,7 @@ public class SeismicHit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.CompareTag("target") || other.CompareTag("smolTarget") || other.CompareTag("laser") 
-        || other.CompareTag("enemy") || other.CompareTag("enemyLaser")) {
+        || other.CompareTag("enemy")) {
             if(done == false) {
                 done = true;
                 hitSphere.SetActive(true);

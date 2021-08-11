@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4100307084957739039}
   - component: {fileID: 4100307084957739038}
   - component: {fileID: 4100307084957739037}
+  - component: {fileID: 2375103227749884075}
   - component: {fileID: 4100307084957739036}
   - component: {fileID: -9140933240424448148}
   m_Layer: 0
@@ -129,6 +130,25 @@ PolygonCollider2D:
       - {x: 1.3323808, y: -0.46259928}
       - {x: 1.427722, y: 0.33352995}
       - {x: 1.2917657, y: 0.40728188}
+--- !u!95 &2375103227749884075
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100307084957739011}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a412782cca0dc864abf716d6b2072b65, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4100307084957739036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: big3
+  animator: {fileID: 2375103227749884075}
   maxHealth: 30
   currentHealth: 0
   onDestroyTurret: {fileID: 5975025129396386317}

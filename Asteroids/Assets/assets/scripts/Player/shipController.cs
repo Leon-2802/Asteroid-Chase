@@ -5,7 +5,11 @@ using UnityEngine;
 public class shipController : MonoBehaviour
 {
     public static shipController instance;
+    [SerializeField] private meteorManager meteorManager = null;
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float slowedSpeed = 2f;
+    [SerializeField] private float magneticSpeed = 1.5f;
+    private float currentSpeed;
     [SerializeField] private Rigidbody2D rb = null;
     [SerializeField] private FixedJoystick joystickL = null;
     [SerializeField] private FixedJoystick joystickR = null;
@@ -13,14 +17,18 @@ public class shipController : MonoBehaviour
     // [SerializeField] private Camera cam = null;
 
     private Vector2 movement;
+    private Vector3 magneticMovement;
     private Vector2 mousePos;
     void Awake()
     {
         instance = this;
+        currentSpeed = speed;
     }
 
     void Update()
     {
+        if(meteorManager.magneticPull == false)
+            currentSpeed = speed;
         // float moveX = Input.GetAxisRaw("Horizontal");
         // float moveY = Input.GetAxisRaw("Vertical");
         float moveX = joystickL.Horizontal;
@@ -54,7 +62,7 @@ public class shipController : MonoBehaviour
 
     void FixedUpdate() 
     {
-        rb.velocity = new Vector2(movement.x * speed, movement.y * speed);
+        rb.velocity = new Vector2(movement.x * currentSpeed, movement.y * currentSpeed);
 
         // Vector2 lookDirec = mousePos - rb.position;
         // float angle = Mathf.Atan2(lookDirec.y, lookDirec.x) * Mathf.Rad2Deg - 90f;
@@ -65,5 +73,14 @@ public class shipController : MonoBehaviour
         Vector2 rotation = new Vector2(rotX, rotY).normalized;
         float angle2 = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle2;
+    }
+
+    public void MoveTowardsMagnetic(Vector3 target)
+    {
+        currentSpeed = slowedSpeed;
+        Vector2 moving2d = Vector2.MoveTowards(transform.position, target, magneticSpeed * Time.deltaTime);
+        magneticMovement.x = moving2d.x;
+        magneticMovement.y = moving2d.y;
+        transform.position = magneticMovement;
     }
 }

@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class meteorManager : MonoBehaviour
 {
+    public static meteorManager instance;
     MeteorPooler meteorPooler;
     GameManager gameManager;
     [SerializeField] private string[] meteorPrefabs = null;
+    [SerializeField] private string magneticPrefab = "";
+    [SerializeField] private int magneticProbability = 0;
     [SerializeField] private Transform[] spawns = null;
     [SerializeField] private float spawnTime = 0f;
     [SerializeField] private bool bossPhase = false;
     private float spawnInterval;
+    public bool magneticPull = false;
 
+    private void Awake() 
+    {
+        instance = this;
+    }
     void Start() {
         meteorPooler = MeteorPooler.Instance;
         gameManager = GameManager.instance;
@@ -47,9 +55,27 @@ public class meteorManager : MonoBehaviour
 
     public void spawnMeteor() 
     {
-        int randMeteor = Random.Range(0, meteorPrefabs.Length);
+        if(gameManager.currentStage == GameManager.Stages.STAGE_1)
+            SpawnMeteorStage1();
+        else
+            SpawnMeteorStageLater();
+    }
+    private void SpawnMeteorStage1()
+    {
         int randSpawn = Random.Range(0, spawns.Length);
+        int randMeteor = Random.Range(0, meteorPrefabs.Length);
         meteorPooler.spawnMeteorsFromPool(meteorPrefabs[randMeteor], spawns[randSpawn].position, Quaternion.identity);
+    }
+    private void SpawnMeteorStageLater()
+    {
+        int magneticRandom = UnityEngine.Random.Range(0, magneticProbability);
+        int randSpawn = Random.Range(0, spawns.Length);
+        if(magneticRandom == (magneticProbability - 1))
+            meteorPooler.spawnMeteorsFromPool(magneticPrefab, spawns[randSpawn].position, Quaternion.identity);
+        else {
+            int randMeteor = Random.Range(0, meteorPrefabs.Length);
+            meteorPooler.spawnMeteorsFromPool(meteorPrefabs[randMeteor], spawns[randSpawn].position, Quaternion.identity);
+        }
     }
 
     public void spawnChildMeteor(string tag) {

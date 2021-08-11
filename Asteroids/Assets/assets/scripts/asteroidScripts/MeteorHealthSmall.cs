@@ -12,6 +12,7 @@ public class MeteorHealthSmall : meteorHealth
         if(other.CompareTag("seismic") || other.CompareTag("missile")) 
             currentHealth = 0;
     }
+    protected override void OnTriggerExit2D(Collider2D other) {}
     protected override void Die() 
     {
         meteorPooler.SpawnProjectileFromPool(explosion, transform.position, transform.rotation);

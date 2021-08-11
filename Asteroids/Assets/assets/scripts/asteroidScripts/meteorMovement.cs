@@ -9,7 +9,6 @@ public class meteorMovement : MonoBehaviour
     [SerializeField] private float speed = 1f;
     public float xValue = 2f;
     public float yValue = 1f;
-    public string spawnPos;
     Vector3 initialPos;
 
     private void Start() {
@@ -42,7 +41,7 @@ public class meteorMovement : MonoBehaviour
 
     void relocate() 
     {
-        if(objectTag == "big1" || objectTag == "big2" || objectTag == "big3")
+        if(objectTag == "big1" || objectTag == "big2" || objectTag == "big3" || objectTag == "magnetic")
             meteorManager.spawnMeteor();
         else 
             meteorManager.spawnChildMeteor(objectTag);

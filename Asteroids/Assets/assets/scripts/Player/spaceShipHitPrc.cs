@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class spaceShipHitPrc : MonoBehaviour
 {
+    [SerializeField] private meteorManager meteorManager = null;
     [SerializeField] private Animator shipAnim = null;
     [SerializeField] private healthbar healthbar = null;
     [SerializeField] private Image[] lives = null;
@@ -65,6 +66,9 @@ public class spaceShipHitPrc : MonoBehaviour
             currentHealth -= damageMissile;
             healthbar.SetHealth(currentHealth);
         }
+        else if(other.CompareTag("magnetic")) {
+            meteorManager.magneticPull = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other) 
@@ -73,6 +77,9 @@ public class spaceShipHitPrc : MonoBehaviour
         || other.CompareTag("missile")) {
             hit = false;
             shipAnim.SetTrigger("NoHit");
+        }
+        else if(other.CompareTag("magnetic")) {
+            meteorManager.magneticPull = false;
         }
     }
 }

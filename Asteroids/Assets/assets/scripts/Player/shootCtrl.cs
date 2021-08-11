@@ -6,9 +6,12 @@ using TMPro;
 public class shootCtrl : MonoBehaviour
 {
     MeteorPooler meteorPooler;
+    [SerializeField] private GameManager gameManager = null;
     [SerializeField] private FixedJoystick joystickR = null;
     [SerializeField] private string laser = null;
+    [SerializeField] private Transform firePoint = null;
     [SerializeField] private Transform firePointL = null;
+    [SerializeField] private Transform firePointR = null;
     [SerializeField] private string seismicCharge = null;
     [SerializeField] private Transform seismicFirePoint = null;
     private float recharge = 0.4f;
@@ -34,9 +37,7 @@ public class shootCtrl : MonoBehaviour
         float y = joystickR.Vertical;
         if(x >= 0.1 || x <= -0.1 || y >= 0.1 || y <= -0.1) {
             if(canShoot == true) {
-                recharge = 0.4f;
-                canShoot = false;
-                meteorPooler.SpawnProjectileFromPool(laser, firePointL.position, firePointL.rotation);
+                Shoot();
             }
         }
         if(canShoot == false) {
@@ -50,6 +51,19 @@ public class shootCtrl : MonoBehaviour
             seismicRecharge -= Time.deltaTime;
             if(seismicRecharge <= 0)
                 canLaunch = true;
+        }
+    }
+
+    private void Shoot()
+    {
+        recharge = 0.4f;
+        canShoot = false;
+        if(gameManager.currentStage == GameManager.Stages.STAGE_1)
+            meteorPooler.SpawnProjectileFromPool(laser, firePoint.position, firePoint.rotation);
+
+        else {
+            meteorPooler.SpawnProjectileFromPool(laser, firePointL.position, firePointL.rotation);
+            meteorPooler.SpawnProjectileFromPool(laser, firePointR.position, firePointR.rotation);
         }
     }
 
