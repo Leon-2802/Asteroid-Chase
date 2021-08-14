@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fdde1583a960e44f95f0a9bab50c3eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 8469961115364720694}
   hitSphere: {fileID: 5906822530634546112}
 --- !u!1001 &6530027542765292005
 PrefabInstance:

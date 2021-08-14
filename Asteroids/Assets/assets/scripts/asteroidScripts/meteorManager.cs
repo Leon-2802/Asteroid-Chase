@@ -12,7 +12,7 @@ public class meteorManager : MonoBehaviour
     [SerializeField] private int magneticProbability = 0;
     [SerializeField] private Transform[] spawns = null;
     [SerializeField] private float spawnTime = 0f;
-    [SerializeField] private bool bossPhase = false;
+    [SerializeField] public bool bossPhase = false;
     private float spawnInterval;
     public bool magneticPull = false;
 

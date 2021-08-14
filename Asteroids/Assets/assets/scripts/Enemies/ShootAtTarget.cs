@@ -5,10 +5,14 @@ using UnityEngine;
 public class ShootAtTarget : MonoBehaviour
 {
     [SerializeField] protected Enemy mainScript = null;
-    [SerializeField] protected float shootInt = 0;
+    [SerializeField] public float shootInt = 0;
     protected float currentShootInt;
     protected bool canShoot = false;
 
+    void OnEnable() {
+        currentShootInt = shootInt;
+    }
+    
     void Update()
     {
         if(mainScript.targetSelected == true && canShoot == true) 

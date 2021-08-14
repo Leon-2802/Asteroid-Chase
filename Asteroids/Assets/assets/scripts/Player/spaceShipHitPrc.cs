@@ -17,11 +17,17 @@ public class spaceShipHitPrc : MonoBehaviour
     private int lifeCount = 2;
     [SerializeField] private int maxHealth = 60;
     [SerializeField] private int currentHealth = 0;
+    [SerializeField] private shootCtrl shootCtrl = null;
+    [SerializeField] private shipController shipController = null;
+    [SerializeField] private float shockwaveCounter = 0f;
+    private float currentShockwaveCounter;
+    private bool shockwaveHit = false;
     private bool hit = false;
     private float pause = 1.5f;
     private void Start() {
         healthbar.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
+        currentShockwaveCounter = shockwaveCounter;
     }
 
     private void Update() 
@@ -44,6 +50,10 @@ public class spaceShipHitPrc : MonoBehaviour
                 healthbar.SetHealth(currentHealth);
                 pause = 1.5f;
             }
+        }
+
+        if(shockwaveHit == true) {
+            ShockwaveHit();
         }
     }
 
@@ -69,6 +79,15 @@ public class spaceShipHitPrc : MonoBehaviour
         else if(other.CompareTag("magnetic")) {
             meteorManager.magneticPull = true;
         }
+        else if(other.CompareTag("shockwave")) {
+            currentShockwaveCounter = shockwaveCounter;
+            shipAnim.SetTrigger("Hit");
+            currentHealth -= 60;
+            healthbar.SetHealth(currentHealth);
+            shootCtrl.enabled = false;
+            shipController.enabled = false;
+            shockwaveHit = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other) 
@@ -80,6 +99,19 @@ public class spaceShipHitPrc : MonoBehaviour
         }
         else if(other.CompareTag("magnetic")) {
             meteorManager.magneticPull = false;
+        }
+    }
+
+    private void ShockwaveHit()
+    {
+        currentShockwaveCounter -= Time.deltaTime;
+        if(currentShockwaveCounter <= 0f) {
+            currentHealth -= 20;
+            healthbar.SetHealth(currentHealth);
+            shipAnim.SetTrigger("NoHit");
+            shootCtrl.enabled = true;
+            shipController.enabled = true;
+            shockwaveHit = false;
         }
     }
 }

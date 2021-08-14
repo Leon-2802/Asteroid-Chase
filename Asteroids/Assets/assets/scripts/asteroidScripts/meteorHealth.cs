@@ -6,6 +6,7 @@ public class meteorHealth : MonoBehaviour
 {
     [SerializeField] protected string objectTag = null;
     protected MeteorPooler meteorPooler;
+    protected GameManager gameManager;
     [SerializeField] private Animator animator = null;
     [SerializeField] protected int maxHealth = 30;
     private bool healthSet = false;
@@ -19,12 +20,16 @@ public class meteorHealth : MonoBehaviour
     public void OnEnable()
     {
         meteorPooler = MeteorPooler.Instance;
+        gameManager = GameManager.instance;
         currentHealth = maxHealth;
     }
 
     protected void Update()
     {
         if(currentHealth <= 0) {
+            Die();
+        }
+        if(gameManager.bossFight[1] == true) {
             Die();
         }
     }

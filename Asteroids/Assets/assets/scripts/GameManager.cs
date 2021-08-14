@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Stages currentStage;
 
     //BossFights:
+    [SerializeField] private BossManger bossManger = null;
     public int[] bossFightStarts;
     public bool[] bossFight;
     public int[] deadBossEnemies;
@@ -66,6 +67,16 @@ public class GameManager : MonoBehaviour
             if(deadBossEnemies[0] >= 3) {
                 bossDefeated[0] = true;
                 StageManaging(Stages.STAGE_2);
+            }
+        }
+        if(scoreCounter >= bossFightStarts[1] && scoreCounter <= bossFightStarts[2]) {
+            if(bossDefeated[1] == true) {
+                bossFight[1] = false;
+                StageManaging(Stages.STAGE_3);
+            }
+            else {
+                bossFight[1] = true;
+                bossManger.StartBossFight2();
             }
         }
     }

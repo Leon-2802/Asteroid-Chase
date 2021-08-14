@@ -12,7 +12,7 @@ public class meteorMovement : MonoBehaviour
     Vector3 initialPos;
 
     private void Start() {
-        meteorManager = GameObject.FindWithTag("meteorManager").GetComponent<meteorManager>();
+        meteorManager = meteorManager.instance;
     }
     public void OnEnable() 
     {
@@ -41,6 +41,12 @@ public class meteorMovement : MonoBehaviour
 
     void relocate() 
     {
+        if(meteorManager.bossPhase == true) {
+            meteorManager.meteorRelocated(objectTag);
+            this.gameObject.SetActive(false);
+            return;
+        }
+        
         if(objectTag == "big1" || objectTag == "big2" || objectTag == "big3" || objectTag == "magnetic")
             meteorManager.spawnMeteor();
         else 

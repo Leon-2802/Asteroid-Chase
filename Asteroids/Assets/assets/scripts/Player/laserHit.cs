@@ -23,12 +23,12 @@ public class laserHit : MonoBehaviour
         if(other.CompareTag("target") || other.CompareTag("enemy") || other.CompareTag("smolTarget")) {
             laserCtrl.noHit = false;
             animator.SetTrigger("explode");
-            DisableColliders();
-            laserCtrl.currentLifetime = 0.5f;
+            // DisableColliders();
+            laserCtrl.currentLifetime = 0.3f;
         }
     }
-    protected void DisableColliders()
-    {
-        triggerCollider.enabled = false;
-    }
+    // protected void DisableColliders()
+    // {
+    //     triggerCollider.enabled = false;
+    // }
 }
