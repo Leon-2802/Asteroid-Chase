@@ -14,6 +14,7 @@ TagManager:
   - enemy
   - missile
   - magnetic
+  - energy
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - EnergyBalls
   - 
   - 
   - 

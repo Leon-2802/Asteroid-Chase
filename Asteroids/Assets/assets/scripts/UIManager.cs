@@ -8,9 +8,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameManager gameManager = null;
     [SerializeField] private TMP_Text stageInfo = null;
     [SerializeField] private TMP_Text bossFight1 = null;
+    [SerializeField] private GameObject bossFight2 = null;
     [SerializeField] private float showUI = 0f;
     private float currentCounter;
     private bool hide2 = false;
+    private bool hide3 = false;
 
     void Start()
     {
@@ -40,6 +42,18 @@ public class UIManager : MonoBehaviour
                     }
                 }
                 break;
+            case GameManager.Stages.STAGE_3:
+                if(hide3 == false) {
+                    stageInfo.text = "- Stage 2 cleared -";
+                    stageInfo.gameObject.SetActive(true);
+                    currentCounter -= Time.deltaTime;
+                    if(currentCounter <= 0) {
+                        stageInfo.gameObject.SetActive(false);
+                        hide3 = true;
+                        currentCounter = showUI;
+                    }
+                }
+                break;
         }
     }
     void BossFightUI()
@@ -48,5 +62,10 @@ public class UIManager : MonoBehaviour
             bossFight1.gameObject.SetActive(true);
         else
             bossFight1.gameObject.SetActive(false);
+
+        if(gameManager.scoreCounter >= gameManager.bossFightStarts[1] && gameManager.bossDefeated[1] == false)
+            bossFight2.SetActive(true);
+        else
+            bossFight2.SetActive(false);
     }
 }

@@ -14,14 +14,21 @@ public class spaceShipHitPrc : MonoBehaviour
     [SerializeField] private int damageAsteroid = 20;
     [SerializeField] private int damageSmallAsteroidLaser = 10;
     [SerializeField] private int damageMissile = 80;
+    [SerializeField] private int damageEnergyBall = 60;
     private int lifeCount = 2;
     [SerializeField] private int maxHealth = 60;
     [SerializeField] private int currentHealth = 0;
+    [SerializeField] private shootCtrl shootCtrl = null;
+    [SerializeField] private shipController shipController = null;
+    [SerializeField] private float shockwaveCounter = 0f;
+    private float currentShockwaveCounter;
+    private bool shockwaveHit = false;
     private bool hit = false;
     private float pause = 1.5f;
     private void Start() {
         healthbar.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
+        currentShockwaveCounter = shockwaveCounter;
     }
 
     private void Update() 
@@ -45,41 +52,82 @@ public class spaceShipHitPrc : MonoBehaviour
                 pause = 1.5f;
             }
         }
+
+        if(shockwaveHit == true) {
+            ShockwaveHit();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("target") && hit == false) {
-            hit = true;
-            shipAnim.SetTrigger("Hit");
-            currentHealth -= damageAsteroid;
-            healthbar.SetHealth(currentHealth);
-        }
-        else if(other.CompareTag("smolTarget") && hit == false || other.CompareTag("enemyLaser") && hit == false) {
-            hit = true;
-            shipAnim.SetTrigger("Hit");
-            currentHealth -= damageSmallAsteroidLaser;
-            healthbar.SetHealth(currentHealth);
-        }
-        else if(other.CompareTag("missile")) {
-            shipAnim.SetTrigger("Hit");
-            currentHealth -= damageMissile;
-            healthbar.SetHealth(currentHealth);
-        }
-        else if(other.CompareTag("magnetic")) {
-            meteorManager.magneticPull = true;
+        string tag = other.gameObject.tag;
+        switch(tag)
+        {
+            case "target":
+                if(hit == false) {
+                    hit = true;
+                    shipAnim.SetTrigger("Hit");
+                    currentHealth -= damageAsteroid;
+                    healthbar.SetHealth(currentHealth);
+                }
+                break;
+            case "smoltarget":
+            case "enemyLaser":
+                if(hit == false) {
+                    hit = true;
+                    shipAnim.SetTrigger("Hit");
+                    currentHealth -= damageSmallAsteroidLaser;
+                    healthbar.SetHealth(currentHealth);
+                }
+                break;
+            case "magnetic":
+                meteorManager.magneticPull = true;
+                break;
+            case "missile":
+                shipAnim.SetTrigger("Hit");
+                currentHealth -= damageMissile;
+                healthbar.SetHealth(currentHealth);
+                break;
+            case "energy":
+                currentShockwaveCounter = shockwaveCounter;
+                shipAnim.SetTrigger("Hit");
+                currentHealth -= damageEnergyBall;
+                healthbar.SetHealth(currentHealth);
+                shootCtrl.enabled = false;
+                shipController.enabled = false;
+                shockwaveHit = true;
+                break;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) 
     {
-        if(other.CompareTag("target") || other.CompareTag("smolTarget") || other.CompareTag("enemyLaser") 
-        || other.CompareTag("missile")) {
-            hit = false;
-            shipAnim.SetTrigger("NoHit");
+        string tag = other.gameObject.tag;
+        switch (tag)
+        {
+            case "target":
+            case "smolTarget":
+            case "enemyLaser":
+            case "missile":
+                hit = false;
+                shipAnim.SetTrigger("NoHit");
+                break;
+            case "magnetic":
+                meteorManager.magneticPull = false;
+                break;
         }
-        else if(other.CompareTag("magnetic")) {
-            meteorManager.magneticPull = false;
+    }
+
+    private void ShockwaveHit()
+    {
+        currentShockwaveCounter -= Time.deltaTime;
+        if(currentShockwaveCounter <= 0f) {
+            currentHealth -= 20;
+            healthbar.SetHealth(currentHealth);
+            shipAnim.SetTrigger("NoHit");
+            shootCtrl.enabled = true;
+            shipController.enabled = true;
+            shockwaveHit = false;
         }
     }
 }

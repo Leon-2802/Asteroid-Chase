@@ -5,19 +5,21 @@ using UnityEngine;
 public class ManageFlames : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D playerRb = null;
-    [SerializeField] private GameObject emmissionRight = null;
-    [SerializeField] private GameObject emmissionLeft = null;
+    [SerializeField] private ParticleSystem emmissionRight = null;
+    [SerializeField] private ParticleSystem emmissionLeft = null;
+    [SerializeField] private float startLifetimeFlying = 1.3f;
+    [SerializeField] private float startLifetimeStanding = 0.3f;
     private Vector2 zero = new Vector2(0, 0);
 
     void Update()
     {
         if(playerRb.velocity != zero) {
-            emmissionRight.SetActive(true);
-            emmissionLeft.SetActive(true);
+            emmissionRight.startLifetime = startLifetimeFlying;
+            emmissionLeft.startLifetime = startLifetimeFlying;
         }
         else {
-            emmissionRight.SetActive(false);
-            emmissionLeft.SetActive(false);
+            emmissionRight.startLifetime = startLifetimeStanding;
+            emmissionLeft.startLifetime = startLifetimeStanding;
         }
     }
 }

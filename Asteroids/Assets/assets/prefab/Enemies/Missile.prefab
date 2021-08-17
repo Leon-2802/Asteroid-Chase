@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: missile
-  speed: 35
+  speed: 20
   lifetime: 5
   currentLifetime: 0
   noHit: 1

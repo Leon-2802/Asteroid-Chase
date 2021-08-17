@@ -6,13 +6,21 @@ public class MeteorHealthSmall : meteorHealth
 {
     protected override void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("laser") || other.CompareTag("enemyLaser")) 
-            currentHealth -= 10;
-    
-        if(other.CompareTag("seismic") || other.CompareTag("missile")) 
-            currentHealth = 0;
+        string tag = other.tag;
+        switch(tag) 
+        {
+            case "laser":
+            case "enemyLaser":
+                currentHealth -= 10;
+                break;
+            case "seismic":
+            case "missile":
+                currentHealth = 0;
+                break;
+        }
     }
     protected override void OnTriggerExit2D(Collider2D other) {}
+
     protected override void Die() 
     {
         meteorPooler.SpawnProjectileFromPool(explosion, transform.position, transform.rotation);

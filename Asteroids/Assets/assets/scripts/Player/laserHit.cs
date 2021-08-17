@@ -24,7 +24,7 @@ public class laserHit : MonoBehaviour
             laserCtrl.noHit = false;
             animator.SetTrigger("explode");
             DisableColliders();
-            laserCtrl.currentLifetime = 0.5f;
+            laserCtrl.currentLifetime = 0.3f;
         }
     }
     protected void DisableColliders()

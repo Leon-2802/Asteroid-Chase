@@ -6,6 +6,7 @@ public class meteorHealth : MonoBehaviour
 {
     [SerializeField] protected string objectTag = null;
     protected MeteorPooler meteorPooler;
+    protected GameManager gameManager;
     [SerializeField] private Animator animator = null;
     [SerializeField] protected int maxHealth = 30;
     private bool healthSet = false;
@@ -19,6 +20,7 @@ public class meteorHealth : MonoBehaviour
     public void OnEnable()
     {
         meteorPooler = MeteorPooler.Instance;
+        gameManager = GameManager.instance;
         currentHealth = maxHealth;
     }
 
@@ -27,30 +29,36 @@ public class meteorHealth : MonoBehaviour
         if(currentHealth <= 0) {
             Die();
         }
+        if(gameManager.bossFight[1] == true) {
+            Die();
+        }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("laser")) {
-            if(onDestroyTurret.gameObject.activeInHierarchy && healthSet == false)
-                SetMaxHealth();
-            currentHealth -= 10;
-            animator.SetTrigger("Hit");
+        string tag = other.tag;
+        switch (tag)
+        {
+            case "laser":
+                if(onDestroyTurret.gameObject.activeInHierarchy && healthSet == false)
+                    SetMaxHealth();
+                currentHealth -= 10;
+                animator.SetTrigger("Hit");
+                break;
+            case "enemyLaser":
+                if(onDestroyTurret.gameObject.activeInHierarchy)
+                    return;
+                currentHealth -= 10;
+                animator.SetTrigger("Hit"); 
+                break;
+            case "seismic": 
+            case "missile":
+                currentHealth = 0;
+                break;
         }
-        if(other.CompareTag("enemyLaser")) {
-            if(onDestroyTurret.gameObject.activeInHierarchy)
-                return;
-            currentHealth -= 10;
-            animator.SetTrigger("Hit");
-        }
-    
-        if(other.CompareTag("seismic") || other.CompareTag("missile")) 
-            currentHealth = 0;
     }
     protected virtual void OnTriggerExit2D(Collider2D other) 
     {
-        if(other.CompareTag("laser"))
-            animator.SetTrigger("NoHit");
-        if(other.CompareTag("enemyLaser")) 
+        if(other.CompareTag("laser") || other.CompareTag("enemyLaser"))
             animator.SetTrigger("NoHit");
     }
 

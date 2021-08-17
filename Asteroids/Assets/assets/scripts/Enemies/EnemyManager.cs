@@ -34,10 +34,15 @@ public class EnemyManager : MonoBehaviour
                 }
             break;
             case GameManager.Stages.STAGE_2:
-                missileLauncherSpawner.spawnInt = missileLauncherSpawnInt;
-                missileLauncherSpawner.enabled = false;
-                fighterLvl1Spawner.enabled = true;
-                fighterLvl2Spawner.enabled = true;
+                if(gameManager.bossFight[1] == true && gameManager.bossDefeated[1] == false) {
+                    fighterLvl1Spawner.enabled = false;
+                    fighterLvl2Spawner.enabled = false;
+                } else {
+                    missileLauncherSpawner.spawnInt = missileLauncherSpawnInt;
+                    missileLauncherSpawner.enabled = false;
+                    fighterLvl1Spawner.enabled = true;
+                    fighterLvl2Spawner.enabled = true;
+                }
             break;
         }
         
