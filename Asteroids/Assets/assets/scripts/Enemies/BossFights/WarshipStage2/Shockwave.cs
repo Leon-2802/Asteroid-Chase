@@ -6,8 +6,9 @@ public class Shockwave : MonoBehaviour
 {
     [SerializeField] private LaunchEnergyBalls launchEnergyBalls = null;
     [SerializeField] private float shockInt = 0f;
+    [SerializeField] private GameObject shockwaveCollider = null;
+    [SerializeField] private Animator animator = null;
     private float currentShockInt;
-    private float currentShockTime;
     void Start()
     {
         currentShockInt = 2f;

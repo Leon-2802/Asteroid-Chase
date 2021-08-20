@@ -6,7 +6,6 @@ public class laserHit : MonoBehaviour
 {
     [SerializeField] private laserCtrl laserCtrl = null;
     [SerializeField] protected Animator animator = null;
-    // [SerializeField] protected BoxCollider2D noneTriggerCollider = null;
     [SerializeField] protected BoxCollider2D triggerCollider = null;
 
     protected void Start() 

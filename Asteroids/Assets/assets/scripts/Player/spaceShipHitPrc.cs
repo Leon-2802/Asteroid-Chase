@@ -98,6 +98,15 @@ public class spaceShipHitPrc : MonoBehaviour
                 shockwaveHit = true;
                 break;
         }
+        else if(other.CompareTag("shockwave")) {
+            currentShockwaveCounter = shockwaveCounter;
+            shipAnim.SetTrigger("Hit");
+            currentHealth -= 60;
+            healthbar.SetHealth(currentHealth);
+            shootCtrl.enabled = false;
+            shipController.enabled = false;
+            shockwaveHit = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other) 
@@ -115,6 +124,19 @@ public class spaceShipHitPrc : MonoBehaviour
             case "magnetic":
                 meteorManager.magneticPull = false;
                 break;
+        }
+    }
+
+    private void ShockwaveHit()
+    {
+        currentShockwaveCounter -= Time.deltaTime;
+        if(currentShockwaveCounter <= 0f) {
+            currentHealth -= 20;
+            healthbar.SetHealth(currentHealth);
+            shipAnim.SetTrigger("NoHit");
+            shootCtrl.enabled = true;
+            shipController.enabled = true;
+            shockwaveHit = false;
         }
     }
 
