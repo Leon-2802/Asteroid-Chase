@@ -19,6 +19,7 @@ TagManager:
   - energySI
   - health
   - PlayerTurret
+  - shield
   layers:
   - Default
   - TransparentFX

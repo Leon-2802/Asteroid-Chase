@@ -43,12 +43,6 @@ public class MothershipHealth : MonoBehaviour
             animator.SetTrigger(animTrigger);
         }
     }
-    void OnTriggerExit2D(Collider2D other) 
-    {
-        if(other.CompareTag("laser")) {
-            animator.SetTrigger("Idle");
-        }
-    }
 
     void Destroyed()
     {

@@ -5097,7 +5097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStage: 0
   bossManger: {fileID: 1960260460}
-  bossFightStarts: fa000000e8030000d007000088130000
+  bossFightStarts: fa000000d00700008813000088130000
   bossFight: 000000
   deadBossEnemies: 00000000
   bossDefeated: 000000
@@ -6295,7 +6295,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 73c8eb9fc4863284fa75e8d01f94a20e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7346,6 +7346,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069280846}
   m_CullTransparentMesh: 0
+--- !u!1 &1109271349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109271350}
+  - component: {fileID: 1109271352}
+  - component: {fileID: 1109271351}
+  - component: {fileID: 1109271353}
+  m_Layer: 0
+  m_Name: Shield
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1109271350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109271349}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1604149383}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1109271351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109271349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fd80b528fa8144ab13789b6cdb6a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdown: 10
+--- !u!58 &1109271352
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109271349}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0066892505, y: -0.1268059}
+  serializedVersion: 2
+  m_Radius: 0.66938096
+--- !u!114 &1109271353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109271349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0664e0f5fb580994794f5a7a3a0b1708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceShipHitPrc: {fileID: 1604149388}
 --- !u!1 &1170660347 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3186665668169137533, guid: 98af6fba5e81e1d4e985a1af36df7f8f,
@@ -8851,6 +8926,7 @@ Transform:
   - {fileID: 1549846240}
   - {fileID: 65005885}
   - {fileID: 2097533826}
+  - {fileID: 1109271350}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8995,6 +9071,7 @@ MonoBehaviour:
   anim: {fileID: 1604149386}
   spaceShipHitPrc: {fileID: 1604149388}
   giveHealth: 250
+  shield: {fileID: 1109271349}
 --- !u!114 &1604149390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16201,6 +16278,11 @@ MonoBehaviour:
     numberOfActive: 0
   - tag: playerTurret
     prefab: {fileID: 7242292554108452543, guid: 6fea0863660ac584d9d384daca8a5c5e,
+      type: 3}
+    size: 5
+    numberOfActive: 0
+  - tag: shield
+    prefab: {fileID: 3070659104524792168, guid: 622b3ddb1e8db6746b272162462d5c8a,
       type: 3}
     size: 5
     numberOfActive: 0

@@ -14534,6 +14534,7 @@ GameObject:
   - component: {fileID: 6029675155092314735}
   - component: {fileID: 6029675155092314732}
   - component: {fileID: 2447726589215912696}
+  - component: {fileID: 5641312778575497974}
   m_Layer: 0
   m_Name: Warship_Stage2
   m_TagString: Untagged
@@ -14648,6 +14649,7 @@ MonoBehaviour:
   healthAfterWeaponsDestroyed: 750
   healthbarScr: {fileID: 0}
   shockwave: {fileID: 6029675155092314732}
+  currentHealth: 0
 --- !u!114 &6029675155092314735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14699,6 +14701,19 @@ MonoBehaviour:
   startPoint: {fileID: 6029675155092314728}
   radius: 5
   moveSpeed: 5
+--- !u!114 &5641312778575497974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6029675155092314730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbad419297e7607479fadb71f89ea572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 6029675155092314734}
 --- !u!1 &6029675155326147592
 GameObject:
   m_ObjectHideFlags: 0

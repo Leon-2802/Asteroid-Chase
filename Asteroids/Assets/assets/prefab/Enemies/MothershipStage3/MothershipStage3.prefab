@@ -5657,6 +5657,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &646736032390858575
 GameObject:
@@ -5787,6 +5788,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &1123270542568648877
 GameObject:
@@ -5917,6 +5919,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &1739763127399252459
 GameObject:
@@ -6047,6 +6050,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &1825646837353934835
 GameObject:
@@ -10849,6 +10853,7 @@ GameObject:
   - component: {fileID: 1946361342617884081}
   - component: {fileID: 2484494934630146993}
   - component: {fileID: 7365648285607749725}
+  - component: {fileID: 4370705440180771604}
   m_Layer: 0
   m_Name: MothershipStage3
   m_TagString: Untagged
@@ -10968,7 +10973,6 @@ MonoBehaviour:
   shockwave: {fileID: 0}
   currentHealth: 0
   gameManager: {fileID: 0}
-  swarm: {fileID: 8975763831275446738}
   energyBallLauncher: {fileID: 4721584672076801690}
   swarmLauncher: {fileID: 8423957521293501454}
   swarmInt: 7
@@ -10991,6 +10995,19 @@ MonoBehaviour:
   - {fileID: 1825646837659301590}
   - {fileID: 2042755016175202416}
   - {fileID: 2255266269437664848}
+--- !u!114 &4370705440180771604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825646837534001057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbad419297e7607479fadb71f89ea572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1946361342617884081}
 --- !u!1 &1825646837659301417
 GameObject:
   m_ObjectHideFlags: 0
@@ -15874,6 +15891,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &2205124672189817315
 GameObject:
@@ -16368,6 +16386,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &3135744517438489785
 GameObject:
@@ -16498,6 +16517,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &3186665668169137533
 GameObject:
@@ -21828,6 +21848,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &6150615718798116042
 GameObject:
@@ -22050,6 +22071,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &6269437879124718046
 GameObject:
@@ -22459,6 +22481,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &6818987611278567776
 GameObject:
@@ -22900,6 +22923,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &6889208751698199452
 GameObject:
@@ -23974,6 +23998,7 @@ MonoBehaviour:
   inRange: 1
   points: 5
   movement: {fileID: 0}
+  rotation: {fileID: 0}
   moveCountdown: 0
 --- !u!1 &8171750775156806691
 GameObject:
@@ -24485,15 +24510,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 580411aa66f459b48a2b6a12a5892c0f, type: 3}
---- !u!4 &1687456401926117921 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1769382257339816307, guid: 580411aa66f459b48a2b6a12a5892c0f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1145347389546922834}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7836046268893907287 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7159085073297295877, guid: 580411aa66f459b48a2b6a12a5892c0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1145347389546922834}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1687456401926117921 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1769382257339816307, guid: 580411aa66f459b48a2b6a12a5892c0f,
     type: 3}
   m_PrefabInstance: {fileID: 1145347389546922834}
   m_PrefabAsset: {fileID: 0}
@@ -24986,15 +25011,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 580411aa66f459b48a2b6a12a5892c0f, type: 3}
---- !u!1 &1204350449509347615 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7159085073297295877, guid: 580411aa66f459b48a2b6a12a5892c0f,
-    type: 3}
-  m_PrefabInstance: {fileID: 8353222571075435290}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7737888268542780009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1769382257339816307, guid: 580411aa66f459b48a2b6a12a5892c0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8353222571075435290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1204350449509347615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7159085073297295877, guid: 580411aa66f459b48a2b6a12a5892c0f,
     type: 3}
   m_PrefabInstance: {fileID: 8353222571075435290}
   m_PrefabAsset: {fileID: 0}
