@@ -15,6 +15,10 @@ TagManager:
   - missile
   - magnetic
   - shockwave
+  - energy
+  - energySI
+  - health
+  - PlayerTurret
   layers:
   - Default
   - TransparentFX

@@ -44,9 +44,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.17800713, y: 0}
   serializedVersion: 2
-  m_Radius: 7.898391
+  m_Radius: 11.45875
 --- !u!1 &8469961115364720843
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 8469961115364720692}
   - component: {fileID: 8469961115364720695}
   - component: {fileID: -2934538331237582938}
+  - component: {fileID: 9010194869147726463}
   m_Layer: 0
   m_Name: MagneticMeteor
   m_TagString: target
@@ -246,6 +247,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8469961115364720694}
   hitSphere: {fileID: 5906822530634546112}
+--- !u!114 &9010194869147726463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8469961115364720843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbad419297e7607479fadb71f89ea572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 8469961115364720694}
 --- !u!1001 &6530027542765292005
 PrefabInstance:
   m_ObjectHideFlags: 0

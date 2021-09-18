@@ -26,9 +26,9 @@ public class EnemyHitPrc : MonoBehaviour
         if(currentHealth <= 0)
             Die();
         if(gameManager.currentStage == GameManager.Stages.STAGE_2 && mainScript.objectTag == "MissileLauncher") 
-            Die();
-        if(gameManager.bossFight[1] == true)
-            Die();
+            Delete();
+        if(gameManager.bossFight[1] == true || gameManager.bossFight[2] == true)
+            Delete();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other) 
@@ -45,17 +45,19 @@ public class EnemyHitPrc : MonoBehaviour
                 break;
         }
     }
-    void OnTriggerExit2D(Collider2D other) 
-    {
-        if(other.CompareTag("laser")) 
-            mainScript.animator.SetTrigger("NoHit");
-    }
 
     protected virtual void Die()
     {
         gameManager.GivePoints(mainScript.points);
         if(mainScript.objectTag == "MissileLauncher" && gameManager.currentStage == GameManager.Stages.STAGE_1)
             gameManager.deadBossEnemies[0]++;
+        enemyPooler.ObjectDestroyed(mainScript.objectTag);
+        enemyPooler.SpawnEnemiesFromPool(explosion, mainScript.enemyPos.position, mainScript.enemyPos.rotation);
+        enemyPooler.ObjectDestroyed(explosion);
+        mainScript.gameObject.SetActive(false);
+    }
+    protected void Delete()
+    {
         enemyPooler.ObjectDestroyed(mainScript.objectTag);
         enemyPooler.SpawnEnemiesFromPool(explosion, mainScript.enemyPos.position, mainScript.enemyPos.rotation);
         enemyPooler.ObjectDestroyed(explosion);

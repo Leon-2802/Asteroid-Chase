@@ -6,6 +6,7 @@ public class MeteorPooler : ObjectPooler
 {
     public static MeteorPooler Instance;
     [SerializeField] private Transform player = null;
+    [SerializeField] private PowerUpManager powerUpManager = null;
     
     private void Awake() 
     {
@@ -18,6 +19,7 @@ public class MeteorPooler : ObjectPooler
 
             for (int i = 0; i < pool.size; i++) { 
                 GameObject obj = Instantiate(pool.prefab);
+                obj.transform.parent = this.gameObject.transform;
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }
@@ -52,6 +54,7 @@ public class MeteorPooler : ObjectPooler
         objectToSpawn.transform.position = pos;
         objectToSpawn.transform.rotation = rot;
         objectToSpawn.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+        powerUpManager.targets.Add(objectToSpawn.transform);
 
         //Turret aktivieren wenn Random-Zahl stimmt: <---
         string objectTag = objectToSpawn.GetComponent<meteorMovement>().objectTag;
@@ -99,4 +102,12 @@ public class MeteorPooler : ObjectPooler
 
         return objectToSpawn;
     }
+     public void MeteorDestroyed(string tag, GameObject asteroid)
+     {
+        foreach (Pool pool in pools) {
+            if(pool.tag == tag) 
+                pool.numberOfActive--;
+        }
+        powerUpManager.targets.Remove(asteroid.transform);
+     }
 }

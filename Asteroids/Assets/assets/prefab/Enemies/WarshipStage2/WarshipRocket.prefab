@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 8686256425031939740}
   - component: {fileID: 8686256425031939743}
   - component: {fileID: -9079561769850962716}
+  - component: {fileID: 7920058036030883228}
   m_Layer: 0
   m_Name: WarshipRocket
   m_TagString: Untagged
@@ -258,3 +259,16 @@ MonoBehaviour:
   explosion: ExplosionSmall
   warshipManager: {fileID: 0}
   damageToWarship: 250
+--- !u!114 &7920058036030883228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686256425031939731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbad419297e7607479fadb71f89ea572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 8686256425031939736}

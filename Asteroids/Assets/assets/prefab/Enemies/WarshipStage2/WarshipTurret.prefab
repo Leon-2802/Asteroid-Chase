@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 7647062326214295812}
   - component: {fileID: 7647062326214295813}
   - component: {fileID: 7356483397584862898}
+  - component: {fileID: -5922177260182456512}
   m_Layer: 0
   m_Name: WarshipTurret
   m_TagString: enemy
@@ -292,3 +293,16 @@ MonoBehaviour:
   explosion: ExplosionSmall
   warshipManager: {fileID: 0}
   damageToWarship: 125
+--- !u!114 &-5922177260182456512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7647062326214295808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbad419297e7607479fadb71f89ea572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 7647062326214295928}

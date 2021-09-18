@@ -66,29 +66,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: MissileLauncher
-  enemyManager: {fileID: 0}
-  distanceChecker: {fileID: 0}
-  rotateTowards: {fileID: 0}
-  shootAtTarget: {fileID: 0}
   animator: {fileID: 6983371716477164410}
   meteorPooler: {fileID: 0}
   projectilePrefab: missile
   projectileSpawn: {fileID: 6983371717442881126}
-  explosion: ExplosionSmall
   enemyPos: {fileID: 6983371716444893486}
   enemyRb: {fileID: 6983371716477164411}
   target: {fileID: 0}
-  shootIntervall: 3
-  pauseTimeAfterRotation: 0.1
   targetSelected: 0
-  attackRadius: 0
   inRange: 1
   points: 20
-  enemyHitPrc: {fileID: 0}
   shootAtTargetMissile: {fileID: 5966522765451950574}
   movement: {fileID: 2010097097033213644}
-  maxHealth: 60
-  speed: 14
+  shipController: {fileID: 0}
 --- !u!114 &-1934443660877014678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +153,7 @@ GameObject:
   - component: {fileID: 6983371716477164404}
   - component: {fileID: 6983371716477164411}
   - component: {fileID: 6983371716477164410}
+  - component: {fileID: 1758599989171543034}
   m_Layer: 0
   m_Name: Physics&Graphics
   m_TagString: Untagged
@@ -275,6 +266,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1758599989171543034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983371716477164406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbad419297e7607479fadb71f89ea572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 6983371716477164410}
 --- !u!1 &6983371717442881127
 GameObject:
   m_ObjectHideFlags: 0

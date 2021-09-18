@@ -26,12 +26,10 @@ public class meteorHealth : MonoBehaviour
 
     protected void Update()
     {
-        if(currentHealth <= 0) {
+        if(currentHealth <= 0) 
             Die();
-        }
-        if(gameManager.bossFight[1] == true) {
-            Die();
-        }
+        if(gameManager.bossFight[1] == true || gameManager.bossFight[2] == true) 
+            Delete();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other) {
@@ -56,11 +54,6 @@ public class meteorHealth : MonoBehaviour
                 break;
         }
     }
-    protected virtual void OnTriggerExit2D(Collider2D other) 
-    {
-        if(other.CompareTag("laser") || other.CompareTag("enemyLaser"))
-            animator.SetTrigger("NoHit");
-    }
 
     void SetMaxHealth() 
     {
@@ -77,10 +70,17 @@ public class meteorHealth : MonoBehaviour
                 meteorPooler.spawnMeteorsFromPool(diePrefab, transform.position, transform.rotation);
             }
         }
-        meteorPooler.ObjectDestroyed(objectTag);
+        meteorPooler.MeteorDestroyed(objectTag, this.gameObject);
         GameManager.instance.GivePoints(points);
         if(onDestroyTurret.gameObject.activeInHierarchy)
             GameManager.instance.GivePoints(onDestroyTurret.points);
+        this.gameObject.SetActive(false);
+    }
+    protected void Delete()
+    {
+        meteorPooler.SpawnProjectileFromPool(explosion, transform.position, transform.rotation);
+        meteorPooler.ObjectDestroyed(explosion);
+        meteorPooler.MeteorDestroyed(objectTag, this.gameObject);
         this.gameObject.SetActive(false);
     }
 }

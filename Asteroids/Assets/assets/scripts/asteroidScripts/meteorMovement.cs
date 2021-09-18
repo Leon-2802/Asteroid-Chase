@@ -24,7 +24,7 @@ public class meteorMovement : MonoBehaviour
             yValue = UnityEngine.Random.Range(0.7f, 2f);
 
         if(initialPos.x > 0)
-            xValue = UnityEngine.Random.Range(-2f, 0.7f);
+            xValue = UnityEngine.Random.Range(-2f, -0.7f);
         else
             xValue = UnityEngine.Random.Range(0.7f, 2f);
     }
@@ -42,7 +42,7 @@ public class meteorMovement : MonoBehaviour
     void relocate() 
     {
         if(meteorManager.bossPhase == true) {
-            meteorManager.meteorRelocated(objectTag);
+            meteorManager.meteorRelocated(objectTag, this.gameObject);
             this.gameObject.SetActive(false);
             return;
         }
@@ -52,7 +52,7 @@ public class meteorMovement : MonoBehaviour
         else 
             meteorManager.spawnChildMeteor(objectTag);
         
-        meteorManager.meteorRelocated(objectTag);
+        meteorManager.meteorRelocated(objectTag, this.gameObject);
         this.gameObject.SetActive(false);
     }
 }

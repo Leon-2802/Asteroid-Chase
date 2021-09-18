@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8410756097193250436}
   - component: {fileID: 1958046528102612773}
   - component: {fileID: 8018965208332634239}
+  - component: {fileID: 4362533124744072897}
   m_Layer: 0
   m_Name: meteor-big1
   m_TagString: target
@@ -157,7 +158,6 @@ MonoBehaviour:
   speed: 1
   xValue: 2
   yValue: 1
-  spawnPos: 
 --- !u!114 &8018965208332634239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +179,19 @@ MonoBehaviour:
   explosion: explosionBig
   dieObjectCount: 3
   points: 1
+--- !u!114 &4362533124744072897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024071647318481553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbad419297e7607479fadb71f89ea572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 8410756097193250436}
 --- !u!1001 &308609055976829452
 PrefabInstance:
   m_ObjectHideFlags: 0

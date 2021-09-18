@@ -19,7 +19,6 @@ public class MeteorHealthSmall : meteorHealth
                 break;
         }
     }
-    protected override void OnTriggerExit2D(Collider2D other) {}
 
     protected override void Die() 
     {
@@ -30,7 +29,7 @@ public class MeteorHealthSmall : meteorHealth
                 meteorPooler.spawnMeteorsFromPool(diePrefab, transform.position, transform.rotation);
             }
         }
-        meteorPooler.ObjectDestroyed(objectTag);
+        meteorPooler.MeteorDestroyed(objectTag, this.gameObject);
         GameManager.instance.GivePoints(points);
         this.gameObject.SetActive(false);
     }
