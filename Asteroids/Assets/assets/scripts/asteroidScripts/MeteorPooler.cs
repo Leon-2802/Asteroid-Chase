@@ -5,6 +5,7 @@ using UnityEngine;
 public class MeteorPooler : ObjectPooler
 {
     public static MeteorPooler Instance;
+    [SerializeField] private GameManager gameManager = null;
     [SerializeField] private Transform player = null;
     [SerializeField] private PowerUpManager powerUpManager = null;
     
@@ -17,11 +18,36 @@ public class MeteorPooler : ObjectPooler
         foreach (Pool pool in pools) {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
-            for (int i = 0; i < pool.size; i++) { 
-                GameObject obj = Instantiate(pool.prefab);
-                obj.transform.parent = this.gameObject.transform;
-                obj.SetActive(false);
-                objectPool.Enqueue(obj);
+            if(pool.tag == "big1" || pool.tag == "big2" || pool.tag == "big3") 
+            {
+                for (int i = 0; i < pool.size; i++) { 
+                    GameObject obj = Instantiate(pool.prefab);
+                    obj.transform.parent = this.gameObject.transform;
+                    obj.GetComponent<meteorHealth>().meteorPooler = this;
+                    obj.GetComponent<meteorHealth>().gameManager = gameManager;
+                    obj.SetActive(false);
+                    objectPool.Enqueue(obj);
+                }
+            }
+            else if(pool.tag == "medium" || pool.tag == "small")
+            {
+                for (int i = 0; i < pool.size; i++) { 
+                    GameObject obj = Instantiate(pool.prefab);
+                    obj.transform.parent = this.gameObject.transform;
+                    obj.GetComponent<MeteorHealthSmall>().meteorPooler = this;
+                    obj.GetComponent<MeteorHealthSmall>().gameManager = gameManager;
+                    obj.SetActive(false);
+                    objectPool.Enqueue(obj);
+                }
+            }
+            else 
+            {
+                for (int i = 0; i < pool.size; i++) { 
+                    GameObject obj = Instantiate(pool.prefab);
+                    obj.transform.parent = this.gameObject.transform;
+                    obj.SetActive(false);
+                    objectPool.Enqueue(obj);
+                }
             }
 
             poolDictionary.Add(pool.tag, objectPool);

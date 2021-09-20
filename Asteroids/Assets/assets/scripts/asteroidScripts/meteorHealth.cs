@@ -5,8 +5,8 @@ using UnityEngine;
 public class meteorHealth : MonoBehaviour
 {
     [SerializeField] protected string objectTag = null;
-    protected MeteorPooler meteorPooler;
-    protected GameManager gameManager;
+    public MeteorPooler meteorPooler;
+    public GameManager gameManager;
     [SerializeField] private Animator animator = null;
     [SerializeField] protected int maxHealth = 30;
     private bool healthSet = false;
@@ -16,19 +16,21 @@ public class meteorHealth : MonoBehaviour
     [SerializeField] protected string explosion = null;
     [SerializeField] protected int dieObjectCount = 4;
     [SerializeField] protected int points = 1;
+    private bool delete = false;
 
     public void OnEnable()
     {
-        meteorPooler = MeteorPooler.Instance;
-        gameManager = GameManager.instance;
         currentHealth = maxHealth;
+        delete = false;
     }
 
     protected void Update()
     {
         if(currentHealth <= 0) 
             Die();
-        if(gameManager.bossFight[1] == true || gameManager.bossFight[2] == true) 
+
+        CheckForBossFight();
+        if(delete == true) 
             Delete();
     }
 
@@ -50,6 +52,7 @@ public class meteorHealth : MonoBehaviour
                 break;
             case "seismic": 
             case "missile":
+            case "shield":
                 currentHealth = 0;
                 break;
         }
@@ -59,6 +62,15 @@ public class meteorHealth : MonoBehaviour
     {
         currentHealth = maxHealth + onDestroyTurret.health;
         healthSet = true;
+    }
+
+    void CheckForBossFight()
+    {
+        for(int i = 1; i < gameManager.bossFight.Length; i++)
+        {
+            if(gameManager.bossFight[i] == true)
+                delete = true;
+        }
     }
 
     protected virtual void Die() 

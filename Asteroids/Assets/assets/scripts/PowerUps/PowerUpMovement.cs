@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUpMovement : MonoBehaviour
 {
+    public GameManager gameManager;
     [SerializeField] public Transform[] spawnsNorth;
     [SerializeField] public Transform[] spawnsEast;
     [SerializeField] public Transform[] spawnsSouth;
@@ -12,12 +13,14 @@ public class PowerUpMovement : MonoBehaviour
     [SerializeField] private Transform target = null;
     [SerializeField] private float speed = 1f;
     private bool move = false;
+    private bool delete = false;
     Vector3 initialPos;
 
     void OnEnable()
     {
         initialPos = transform.position;
         target = transform;
+        delete = false;
 
         if(spawnsAssigned == true)
             CheckPosition();
@@ -51,6 +54,10 @@ public class PowerUpMovement : MonoBehaviour
             if(transform.position == target.position)
                 Destroy();
         }
+
+        CheckForBossFight();
+        if(delete)
+            Destroy();
     }
 
     void CheckPosition()
@@ -78,6 +85,14 @@ public class PowerUpMovement : MonoBehaviour
             target = spawnsEast[rand];
             move = true;
             return;
+        }
+    }
+    void CheckForBossFight()
+    {
+        for(int i = 1; i < gameManager.bossFight.Length; i++)
+        {
+            if(gameManager.bossFight[i] == true)
+                delete = true;
         }
     }
 

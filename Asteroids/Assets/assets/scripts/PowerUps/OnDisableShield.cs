@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class OnDisableShield : MonoBehaviour
 {
-    [SerializeField] private spaceShipHitPrc spaceShipHitPrc = null;
+    [SerializeField] private GameObject HitPrc = null;
     private void OnDisable() 
     {
-        spaceShipHitPrc.enabled = true;
+        HitPrc.SetActive(true);
     }
 }

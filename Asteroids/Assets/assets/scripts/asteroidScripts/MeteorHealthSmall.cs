@@ -15,6 +15,7 @@ public class MeteorHealthSmall : meteorHealth
                 break;
             case "seismic":
             case "missile":
+            case "shield":
                 currentHealth = 0;
                 break;
         }

@@ -20,6 +20,7 @@ TagManager:
   - health
   - PlayerTurret
   - shield
+  - shieldCard
   layers:
   - Default
   - TransparentFX

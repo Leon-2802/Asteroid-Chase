@@ -7,7 +7,7 @@ public class LaserRedHit : laserHit
     [SerializeField] private laserRedCtrl laserRedCtrl = null;
     protected override void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("Player") || other.CompareTag("smolTarget") || other.CompareTag("PlayerTurret")) {
+        if(other.CompareTag("Player") || other.CompareTag("smolTarget") || other.CompareTag("PlayerTurret") || other.CompareTag("shield")) {
             laserRedCtrl.noHit = false;
             animator.SetTrigger("explode");
             laserRedCtrl.currentLifetime = 0.5f;

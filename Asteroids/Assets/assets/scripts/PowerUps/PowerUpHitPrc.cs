@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUpHitPrc : MonoBehaviour
 {
     [SerializeField] private Animator anim = null;
-    [SerializeField] private spaceShipHitPrc spaceShipHitPrc = null;
+    [SerializeField] private GameObject HitPrc = null;
     [SerializeField] private int giveHealth = 0;
     [SerializeField] private GameObject shield = null;
 
@@ -15,12 +15,12 @@ public class PowerUpHitPrc : MonoBehaviour
         switch(tag)
         {
             case "health":
-                spaceShipHitPrc.GiveHealth(giveHealth);
+                HitPrc.GetComponent<spaceShipHitPrc>().GiveHealth(giveHealth);
                 anim.SetTrigger("Heal");
                 break;
-            case "shield":
+            case "shieldCard":
                 shield.SetActive(true);
-                spaceShipHitPrc.enabled = false;
+                HitPrc.SetActive(false);
                 break;
         }
     }

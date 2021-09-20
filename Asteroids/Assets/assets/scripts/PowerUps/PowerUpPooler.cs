@@ -7,6 +7,8 @@ public class PowerUpPooler : ObjectPooler
     public static PowerUpPooler instance;
     [SerializeField] private PowerUpManager powerUpManager = null;
     [SerializeField] private MeteorPooler meteorPooler = null;
+    [SerializeField] private EnemyPooler enemyPooler = null;
+    [SerializeField] private GameManager gameManager = null;
 
     [SerializeField] private Transform[] spawnsNorth = null;
     [SerializeField] private Transform[] spawnsEast = null;
@@ -23,19 +25,25 @@ public class PowerUpPooler : ObjectPooler
         foreach (Pool pool in pools) {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
-            if(pool.tag == "playerTurret") {
+            if(pool.tag == "playerTurret") 
+            {
                 for (int i = 0; i < pool.size; i++) { 
                     GameObject obj = Instantiate(pool.prefab);
                     obj.transform.parent = this.gameObject.transform;
                     obj.GetComponent<PlayerTurretShooting>().powerUpManager = powerUpManager;
                     obj.GetComponent<PlayerTurretShooting>().meteorPooler = meteorPooler;
+                    obj.GetComponent<PlayerTurretHitPrc>().enemyPooler = enemyPooler;
+                    obj.GetComponent<PlayerTurretHitPrc>().gameManager = gameManager;
                     obj.SetActive(false);
                     objectPool.Enqueue(obj);
                 }
-            } else {
+            } 
+            else 
+            {
                 for (int i = 0; i < pool.size; i++) { 
                     GameObject obj = Instantiate(pool.prefab);
                     obj.transform.parent = this.gameObject.transform;
+                    obj.GetComponent<PowerUpMovement>().gameManager = gameManager;
                     obj.SetActive(false);
                     objectPool.Enqueue(obj);
                 }
