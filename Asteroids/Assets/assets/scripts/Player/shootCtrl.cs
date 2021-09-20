@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class shootCtrl : MonoBehaviour
@@ -12,6 +13,9 @@ public class shootCtrl : MonoBehaviour
     [SerializeField] private Transform firePoint = null;
     [SerializeField] private Transform firePointL = null;
     [SerializeField] private Transform firePointR = null;
+    [SerializeField] private Image laserUI = null;
+    [SerializeField] private Sprite laserOne = null;
+    [SerializeField] private Sprite laserDouble = null;
     [SerializeField] private string seismicCharge = null;
     [SerializeField] private Transform seismicFirePoint = null;
     private float recharge = 0.4f;
@@ -55,10 +59,12 @@ public class shootCtrl : MonoBehaviour
     {
         recharge = 0.4f;
         canShoot = false;
-        if(gameManager.currentStage == GameManager.Stages.STAGE_1)
+        if(gameManager.currentStage == GameManager.Stages.STAGE_1) {
+            laserUI.sprite = laserOne;
             meteorPooler.SpawnProjectileFromPool(laser, firePoint.position, firePoint.rotation);
-
+        }
         else {
+            laserUI.sprite = laserDouble;
             meteorPooler.SpawnProjectileFromPool(laser, firePointL.position, firePointL.rotation);
             meteorPooler.SpawnProjectileFromPool(laser, firePointR.position, firePointR.rotation);
         }

@@ -8,7 +8,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameManager gameManager = null;
     [SerializeField] private TMP_Text stageInfo = null;
     [SerializeField] private TMP_Text bossFight1 = null;
+    [SerializeField] private GameObject healthbarBoss = null;
     [SerializeField] private GameObject bossFight2 = null;
+    [SerializeField] private GameObject bossFight3 = null;
     [SerializeField] private float showUI = 0f;
     private float currentCounter;
     private bool hide2 = false;
@@ -75,10 +77,23 @@ public class UIManager : MonoBehaviour
         else
             bossFight1.gameObject.SetActive(false);
 
-        if(gameManager.scoreCounter >= gameManager.bossFightStarts[1] && gameManager.bossDefeated[1] == false || 
-            gameManager.scoreCounter >= gameManager.bossFightStarts[2] && gameManager.bossDefeated[2] == false)
+        if(gameManager.scoreCounter >= gameManager.bossFightStarts[1] && gameManager.bossDefeated[1] == false) {
+            healthbarBoss.SetActive(true);
             bossFight2.SetActive(true);
-        else
+        }
+        else if(gameManager.bossDefeated[1] == true && gameManager.scoreCounter < gameManager.bossFightStarts[2]) {
+            healthbarBoss.SetActive(false);
             bossFight2.SetActive(false);
+        }
+
+        if(gameManager.scoreCounter >= gameManager.bossFightStarts[2] && gameManager.bossDefeated[2] == false) {
+            bossFight3.SetActive(true);
+            healthbarBoss.SetActive(true);
+        }
+        else if(gameManager.bossDefeated[2] == true && gameManager.scoreCounter < gameManager.bossFightStarts[3]) {
+            healthbarBoss.SetActive(false);
+            bossFight2.SetActive(false);
+        }
+        
     }
 }

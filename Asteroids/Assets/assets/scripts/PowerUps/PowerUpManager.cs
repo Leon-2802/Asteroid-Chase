@@ -29,11 +29,11 @@ public class PowerUpManager : MonoBehaviour
                 powerUpPooler.SpawnPowerUpFromPool("health", spawns[index].position, spawns[index].rotation);
                 currentSpawnInt = spawnInt; 
             }
-            else if(whichPrefab >= 3 && whichPrefab < 5 && bossPhase == false) {
+            else if(whichPrefab >= 3 && whichPrefab < 6 && bossPhase == false) {
                 powerUpPooler.SpawnPowerUpFromPool("turretCard", spawns[index].position, spawns[index].rotation);
                 currentSpawnInt = spawnInt; 
             }
-            else if(whichPrefab >= 5 && whichPrefab < 8 && bossPhase == false) {
+            else if(whichPrefab >= 6 && whichPrefab < 8 && bossPhase == false) {
                 powerUpPooler.SpawnPowerUpFromPool("shield", spawns[index].position, spawns[index].rotation);
                 currentSpawnInt = spawnInt;
             }

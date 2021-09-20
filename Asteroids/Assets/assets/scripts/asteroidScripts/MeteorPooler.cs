@@ -18,7 +18,7 @@ public class MeteorPooler : ObjectPooler
         foreach (Pool pool in pools) {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
-            if(pool.tag == "big1" || pool.tag == "big2" || pool.tag == "big3") 
+            if(pool.tag == "big1" || pool.tag == "big2" || pool.tag == "big3" || pool.tag == "magnetic") 
             {
                 for (int i = 0; i < pool.size; i++) { 
                     GameObject obj = Instantiate(pool.prefab);
