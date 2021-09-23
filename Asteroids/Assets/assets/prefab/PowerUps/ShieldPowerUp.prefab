@@ -141,10 +141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc0d2e9a676f4348af0d173537d986d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   spawnsNorth: []
   spawnsEast: []
   spawnsSouth: []
   spawnsWest: []
   spawnsAssigned: 0
   target: {fileID: 0}
-  speed: 1
+  speed: 0.8

@@ -92,7 +92,7 @@ public class UIManager : MonoBehaviour
         }
         else if(gameManager.bossDefeated[2] == true && gameManager.scoreCounter < gameManager.bossFightStarts[3]) {
             healthbarBoss.SetActive(false);
-            bossFight2.SetActive(false);
+            bossFight3.SetActive(false);
         }
         
     }

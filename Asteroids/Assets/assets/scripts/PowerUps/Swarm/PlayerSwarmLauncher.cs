@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwarmLauncher : MonoBehaviour
+public class PlayerSwarmLauncher : SwarmLauncher
 {
-    [SerializeField] protected int numberOfShips = 0;
-    [SerializeField] protected List<GameObject> prefabs = null;
-    [SerializeField] protected Transform startPoint = null;
-    [SerializeField] protected float radius = 0f;
-    [SerializeField] protected float moveSpeed = 0f;
-
-    public virtual void SpawnSwarm()
+    private void OnEnable() 
     {
-        float angleStep = 180f / numberOfShips;
-        float angle = 90f;
+        SpawnSwarm();
+    }
+    public override void SpawnSwarm()
+    {
+        float angleStep = 360f / numberOfShips;
+        float angle = 0f;
 
         for (int i = 0; i < prefabs.Count; i++) {
 			
@@ -29,6 +27,15 @@ public class SwarmLauncher : MonoBehaviour
 			ship.GetComponent<Rigidbody2D> ().velocity = new Vector2 (shipMoveDirection.x, shipMoveDirection.y);
 
 			angle += angleStep;
+		}
+    }
+
+    private void OnDisable() 
+    {
+        for (int i = 0; i < prefabs.Count; i++) 
+        {
+			GameObject ship = prefabs[i];
+            ship.transform.position = startPoint.position;
 		}
     }
 }

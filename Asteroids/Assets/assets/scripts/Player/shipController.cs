@@ -34,6 +34,10 @@ public class shipController : MonoBehaviour
         float moveX = joystickL.Horizontal;
         float moveY = joystickL.Vertical;
         movement = new Vector2(moveX, moveY).normalized;
+        
+        Vector3 newPosition = transform.position;
+        newPosition += new Vector3(movement.x, movement.y, 0) * speed * Time.deltaTime;
+        transform.position = newPosition;
 
         // mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
@@ -62,8 +66,6 @@ public class shipController : MonoBehaviour
 
     void FixedUpdate() 
     {
-        rb.velocity = new Vector2(movement.x * currentSpeed, movement.y * currentSpeed);
-
         // Vector2 lookDirec = mousePos - rb.position;
         // float angle = Mathf.Atan2(lookDirec.y, lookDirec.x) * Mathf.Rad2Deg - 90f;
         // rb.rotation = angle;

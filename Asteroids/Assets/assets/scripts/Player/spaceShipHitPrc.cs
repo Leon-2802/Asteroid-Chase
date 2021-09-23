@@ -70,16 +70,8 @@ public class spaceShipHitPrc : MonoBehaviour
         string tag = other.gameObject.tag;
         switch(tag)
         {
-            case "target":
-                if(hit == false) {
-                    hit = true;
-                    shipAnim.SetTrigger("Hit");
-                    currentHealth -= damageAsteroid;
-                    healthbar.SetHealth(currentHealth);
-                }
-                break;
-            case "smoltarget":
             case "enemyLaser":
+            case "smoltarget":
                 if(hit == false) {
                     hit = true;
                     shipAnim.SetTrigger("Hit");
@@ -87,13 +79,13 @@ public class spaceShipHitPrc : MonoBehaviour
                     healthbar.SetHealth(currentHealth);
                 }
                 break;
-            case "magnetic":
-                meteorManager.magneticPull = true;
-                break;
             case "missile":
                 shipAnim.SetTrigger("Hit");
                 currentHealth -= damageMissile;
                 healthbar.SetHealth(currentHealth);
+                break;
+            case "magnetic":
+                meteorManager.magneticPull = true;
                 break;
             case "energy":
                 currentShockwaveCounter = shockwaveCounter;
@@ -112,6 +104,14 @@ public class spaceShipHitPrc : MonoBehaviour
                 shootCtrl.enabled = false;
                 spaceInvadersCtrls.enabled = false;
                 energyBallHit = true;
+                break;
+            case "target":
+                if(hit == false) {
+                    hit = true;
+                    shipAnim.SetTrigger("Hit");
+                    currentHealth -= damageAsteroid;
+                    healthbar.SetHealth(currentHealth);
+                }
                 break;
         }
     }

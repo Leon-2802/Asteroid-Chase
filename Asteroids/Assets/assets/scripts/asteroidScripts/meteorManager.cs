@@ -12,11 +12,15 @@ public class meteorManager : MonoBehaviour
     public int magneticProbability = 0;
     [SerializeField] private Transform[] spawns = null;
     [SerializeField] private float spawnTime = 0f;
+    [SerializeField] private float spawnTimeStage3 = 0f;
+    [SerializeField] private float spawnTimeStage4 = 0f;
+    [SerializeField] private float spawnTimeStage5 = 0f;
     [SerializeField] public bool bossPhase = false;
     private float spawnInterval;
     public bool magneticPull = false;
     private bool spawn4Stage3 = false;
     private bool spawn4Stage4 = false;
+    private bool spawn4Stage5 = false;
 
     private void Awake() 
     {
@@ -38,24 +42,52 @@ public class meteorManager : MonoBehaviour
         CheckForBossFight();
         if(bossPhase == false) 
         {
-            spawnInterval -= Time.deltaTime;
-            if(spawnInterval <= 0) {
-                spawnInterval = spawnTime;
-                spawnMeteor();
-            }
-        }
 
-        if(gameManager.currentStage == GameManager.Stages.STAGE_3) {
-            if(spawn4Stage3 == false) {
-                SpawnFourTimes();
-                spawn4Stage3 = true;
+            switch(gameManager.currentStage)
+            {
+                case GameManager.Stages.STAGE_1:
+                case GameManager.Stages.STAGE_2:
+                    spawnInterval -= Time.deltaTime;
+                    if(spawnInterval <= 0) {
+                        spawnInterval = spawnTime;
+                        spawnMeteor();
+                    }
+                    break;
+                case GameManager.Stages.STAGE_3:
+                    if(spawn4Stage3 == false) {
+                        SpawnFourTimes();
+                        spawn4Stage3 = true;
+                    }
+                    spawnInterval -= Time.deltaTime;
+                    if(spawnInterval <= 0) {
+                        spawnInterval = spawnTimeStage3;
+                        spawnMeteor();
+                    }
+                    break;
+                case GameManager.Stages.STAGE_4:
+                    if(spawn4Stage4 == false) {
+                        SpawnFourTimes();
+                        spawn4Stage4 = true;
+                    }
+                    spawnInterval -= Time.deltaTime;
+                    if(spawnInterval <= 0) {
+                        spawnInterval = spawnTimeStage4;
+                        spawnMeteor();
+                    }
+                    break;
+                case GameManager.Stages.STAGE_5:
+                    if(spawn4Stage5 == false) {
+                        SpawnFourTimes();
+                        spawn4Stage5 = true;
+                    }
+                    spawnInterval -= Time.deltaTime;
+                    if(spawnInterval <= 0) {
+                        spawnInterval = spawnTimeStage5;
+                        spawnMeteor();
+                    }
+                    break;
             }
-        }
-        if(gameManager.currentStage == GameManager.Stages.STAGE_4) {
-            if(spawn4Stage4 == false) {
-                SpawnFourTimes();
-                spawn4Stage4 = true;
-            }
+
         }
     }
 

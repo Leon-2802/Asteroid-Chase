@@ -24,7 +24,7 @@ public class PowerUpManager : MonoBehaviour
         if(currentSpawnInt <= 0)
         {
             int index = UnityEngine.Random.Range(0, spawns.Length);
-            int whichPrefab = UnityEngine.Random.Range(0, 10);
+            int whichPrefab = UnityEngine.Random.Range(0, 12);
             if(whichPrefab >= 0 && whichPrefab < 3 && bossPhase == false) {
                 powerUpPooler.SpawnPowerUpFromPool("health", spawns[index].position, spawns[index].rotation);
                 currentSpawnInt = spawnInt; 
@@ -35,6 +35,10 @@ public class PowerUpManager : MonoBehaviour
             }
             else if(whichPrefab >= 6 && whichPrefab < 8 && bossPhase == false) {
                 powerUpPooler.SpawnPowerUpFromPool("shield", spawns[index].position, spawns[index].rotation);
+                currentSpawnInt = spawnInt;
+            }
+            else if(whichPrefab >= 8 && whichPrefab < 10 && bossPhase == false) {
+                powerUpPooler.SpawnPowerUpFromPool("swarmCard", spawns[index].position, spawns[index].rotation);
                 currentSpawnInt = spawnInt;
             }
             else {
