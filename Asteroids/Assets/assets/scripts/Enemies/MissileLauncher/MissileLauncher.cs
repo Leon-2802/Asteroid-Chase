@@ -7,6 +7,7 @@ public class MissileLauncher : Enemy
     [SerializeField] private ShootAtTargetMissile shootAtTargetMissile = null;
     [SerializeField] private FlyTowardsMovement movement = null;
     [SerializeField] private shipController shipController;
+    private bool started = false;
 
     void Awake() {
         shipController = shipController.instance;
@@ -16,6 +17,9 @@ public class MissileLauncher : Enemy
     void OnEnable() 
     {
         movement.target = target.position;
+        if(started)
+            enemyList.enemies.Add(this.gameObject);
+        started = true;
     }
 
     void Update() 

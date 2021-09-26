@@ -8,6 +8,7 @@ public class PowerUpHitPrc : MonoBehaviour
     [SerializeField] private GameObject HitPrc = null;
     [SerializeField] private int giveHealth = 0;
     [SerializeField] private GameObject shield = null;
+    [SerializeField] private GameObject swarm = null;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,6 +22,9 @@ public class PowerUpHitPrc : MonoBehaviour
             case "shieldCard":
                 shield.SetActive(true);
                 HitPrc.SetActive(false);
+                break;
+            case "swarmCard":
+                swarm.SetActive(true);
                 break;
         }
     }

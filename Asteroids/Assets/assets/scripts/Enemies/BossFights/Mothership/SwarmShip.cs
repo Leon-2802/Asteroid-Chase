@@ -25,6 +25,6 @@ public class SwarmShip : Enemy
 
     void OnDisable()
     {
-        movement.SetActive(false);
+        movement.SetActive(false); 
     }
 }

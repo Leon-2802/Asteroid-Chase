@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public string objectTag;
+    public EnemyList enemyList;
     public Animator animator;
     public MeteorPooler meteorPooler;
     public string projectilePrefab;

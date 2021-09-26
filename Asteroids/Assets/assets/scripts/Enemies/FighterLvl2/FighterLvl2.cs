@@ -8,10 +8,15 @@ public class FighterLvl2 : Fighter
     [SerializeField] private CrossMovement moveScript = null;
     [SerializeField] private float stopInt = 0f;
     private float currentStopInt;
+    private bool started2 = false;
 
-    void OnEnable() 
+    protected override void OnEnable() 
     {
         currentStopInt = stopInt;
+
+        if(started2)
+            enemyList.enemies.Add(this.gameObject);
+        started2 = true;
     }
 
     void Update()

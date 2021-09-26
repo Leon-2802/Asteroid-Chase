@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyList : MonoBehaviour
 {
-    public List<GameManager> enemies;
+    public List<GameObject> enemies;
 
     void Update()
     {
         for(int i = 0; i < enemies.Count; i++)
         {
-            if(enemies[i] != isActiveAndEnabled)
+            if(!enemies[i].activeInHierarchy)
                 enemies.Remove(enemies[i]);
         }
     }

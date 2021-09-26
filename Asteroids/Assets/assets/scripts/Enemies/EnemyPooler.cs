@@ -5,8 +5,61 @@ using UnityEngine;
 public class EnemyPooler : ObjectPooler
 {
     public static EnemyPooler instance;
+    [SerializeField] private EnemyList enemyList = null;
     private void Awake() {
         instance = this;
+    }
+
+    protected override void Start() 
+    {
+        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+
+        foreach (Pool pool in pools) {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+
+            switch(pool.tag)
+            {
+                case "FighterLvl1":
+                    for (int i = 0; i < pool.size; i++) { 
+                        GameObject obj = Instantiate(pool.prefab);
+                        obj.transform.parent = this.gameObject.transform;
+                        obj.GetComponent<Fighter>().enemyList = enemyList;
+                        obj.SetActive(false);
+                        objectPool.Enqueue(obj);
+                    }
+                    break;
+                case "FighterLvl2":
+                    for (int i = 0; i < pool.size; i++) { 
+                        GameObject obj = Instantiate(pool.prefab);
+                        obj.transform.parent = this.gameObject.transform;
+                        obj.GetComponent<FighterLvl2>().enemyList = enemyList;
+                        obj.SetActive(false);
+                        objectPool.Enqueue(obj);
+                    }
+                    break;
+                case "MissileLauncher":
+                    for (int i = 0; i < pool.size; i++) { 
+                        GameObject obj = Instantiate(pool.prefab);
+                        obj.transform.parent = this.gameObject.transform;
+                        obj.GetComponent<MissileLauncher>().enemyList = enemyList;
+                        obj.SetActive(false);
+                        objectPool.Enqueue(obj);
+                    }
+                    break;
+                case "ExplosionSmall":
+                case "MissileExplosion":
+                    for (int i = 0; i < pool.size; i++) { 
+                        GameObject obj = Instantiate(pool.prefab);
+                        obj.transform.parent = this.gameObject.transform;
+                        obj.SetActive(false);
+                        objectPool.Enqueue(obj);
+                    }
+                    break;
+
+            }
+
+            poolDictionary.Add(pool.tag, objectPool);
+        }
     }
 
     public GameObject SpawnEnemiesFromPool(string tag, Vector3 pos, Quaternion rot) 

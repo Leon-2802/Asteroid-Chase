@@ -8,6 +8,7 @@ public class MeteorPooler : ObjectPooler
     [SerializeField] private GameManager gameManager = null;
     [SerializeField] private Transform player = null;
     [SerializeField] private PowerUpManager powerUpManager = null;
+    [SerializeField] private EnemyList enemyList = null;
     
     private void Awake() 
     {
@@ -91,8 +92,13 @@ public class MeteorPooler : ObjectPooler
                 objectToSpawn.transform.GetChild(0).gameObject.SetActive(true);
                 objectToSpawn.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<EnemyTurret>().target = player;
                 objectToSpawn.GetComponent<SpriteRenderer>().sortingLayerName = "TurretAsteroids";
+                enemyList.enemies.Add(objectToSpawn);
             }
         }
+        //--->
+        //wenn magnetic, dann auch in EnemyList:
+        else if(objectTag == "magnetic")
+            enemyList.enemies.Add(objectToSpawn);
         //--->
 
         poolDictionary[tag].Enqueue(objectToSpawn);

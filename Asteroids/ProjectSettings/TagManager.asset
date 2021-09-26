@@ -21,6 +21,7 @@ TagManager:
   - PlayerTurret
   - shield
   - shieldCard
+  - swarmCard
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Spaceship
   - 
   - 
   - 
