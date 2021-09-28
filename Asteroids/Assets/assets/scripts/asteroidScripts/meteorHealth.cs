@@ -55,6 +55,9 @@ public class meteorHealth : MonoBehaviour
             case "shield":
                 currentHealth = 0;
                 break;
+            case "StarEruption":
+                Delete();
+                break;
         }
     }
 

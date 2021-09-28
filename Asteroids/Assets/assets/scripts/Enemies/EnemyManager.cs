@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float missileBossSpawnInt = 0f;
     [SerializeField] private float missileLauncherSpawnInt = 0f;
     [SerializeField] private EnemySpawnHandler fighterLvl2Spawner = null;
+    [SerializeField] private GameObject eruptionLauncher = null;
 
 
     void Update()
@@ -42,11 +43,34 @@ public class EnemyManager : MonoBehaviour
                 }
             break;
             case GameManager.Stages.STAGE_3:
-                missileLauncherSpawner.enabled = true;
-                fighterLvl1Spawner.enabled = true;
-                fighterLvl2Spawner.enabled = true;
-                meteorManager.magneticProbability = 5;
+                if(gameManager.bossFight[2] == true && gameManager.bossDefeated[2] == false) {
+                    fighterLvl1Spawner.enabled = false;
+                    fighterLvl2Spawner.enabled = false;
+                    missileLauncherSpawner.enabled = false;
+                } else {
+                    missileLauncherSpawner.enabled = true;
+                    fighterLvl1Spawner.enabled = true;
+                    fighterLvl2Spawner.enabled = true;
+                    meteorManager.magneticProbability = 5;
+                }
                 break;
+            case GameManager.Stages.STAGE_4:
+                if(gameManager.bossFight[3] == true && gameManager.bossDefeated[3] == false) {
+                    eruptionLauncher.SetActive(false);
+                    missileLauncherSpawner.enabled = false;
+                    fighterLvl1Spawner.enabled = false;
+                    fighterLvl2Spawner.enabled = false;
+                }
+                else 
+                {
+                    missileLauncherSpawner.enabled = true;
+                    fighterLvl1Spawner.enabled = true;
+                    fighterLvl2Spawner.enabled = true;
+                    eruptionLauncher.SetActive(true);
+                    meteorManager.magneticProbability = 5;
+                }
+                break;
+                
         }
         
     }

@@ -43,6 +43,9 @@ public class EnemyHitPrc : MonoBehaviour
             case "seismic":
                 currentHealth = 0;
                 break;
+            case "StarEruption":
+                Delete();
+                break;
         }
     }
 

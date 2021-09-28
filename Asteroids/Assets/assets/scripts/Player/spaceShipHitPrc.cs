@@ -79,6 +79,14 @@ public class spaceShipHitPrc : MonoBehaviour
                     healthbar.SetHealth(currentHealth);
                 }
                 break;
+            case "target":
+                if(hit == false) {
+                    hit = true;
+                    shipAnim.SetTrigger("Hit");
+                    currentHealth -= damageAsteroid;
+                    healthbar.SetHealth(currentHealth);
+                }
+                break;
             case "missile":
                 shipAnim.SetTrigger("Hit");
                 currentHealth -= damageMissile;
@@ -105,13 +113,8 @@ public class spaceShipHitPrc : MonoBehaviour
                 spaceInvadersCtrls.enabled = false;
                 energyBallHit = true;
                 break;
-            case "target":
-                if(hit == false) {
-                    hit = true;
-                    shipAnim.SetTrigger("Hit");
-                    currentHealth -= damageAsteroid;
-                    healthbar.SetHealth(currentHealth);
-                }
+            case "StarEruption":
+                currentHealth = 0;
                 break;
         }
     }

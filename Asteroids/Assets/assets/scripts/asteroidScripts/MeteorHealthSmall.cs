@@ -18,6 +18,9 @@ public class MeteorHealthSmall : meteorHealth
             case "shield":
                 currentHealth = 0;
                 break;
+            case "StarEruption":
+                Delete();
+                break;
         }
     }
 

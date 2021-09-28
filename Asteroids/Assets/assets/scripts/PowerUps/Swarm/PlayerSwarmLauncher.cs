@@ -6,6 +6,7 @@ public class PlayerSwarmLauncher : SwarmLauncher
 {
     [SerializeField] private EnemyList enemyList = null;
     [SerializeField] private float countdown = 0f;
+    [SerializeField] private Transform player = null;
     private float currentCountdown;
     private int selectCounter = 0;
     private void OnEnable() 
@@ -69,7 +70,7 @@ public class PlayerSwarmLauncher : SwarmLauncher
         {
 			GameObject ship = prefabs[i];
             ship.transform.position = startPoint.position;
-            ship.GetComponent<SwarmShip>().target = this.gameObject.transform;
+            ship.GetComponent<SwarmShip>().target = player;
             ship.transform.GetChild(0).gameObject.SetActive(false);
 		}
     }

@@ -33,7 +33,7 @@ public class FighterMovement : MonoBehaviour
                 Vector3 newPosition = mainScript.enemyPos.position;
                 newPosition -= transform.up * speed * Time.deltaTime;
                 mainScript.enemyPos.position = newPosition;
-                if(transform.position.y <= -8)
+                if(transform.position.y <= -8.4f)
                     MovementEnded();
             }
             else if(anchorsIndex == 3) 
@@ -49,7 +49,7 @@ public class FighterMovement : MonoBehaviour
                 Vector3 newPosition = mainScript.enemyPos.position;
                 newPosition += transform.up * speed * Time.deltaTime;
                 mainScript.enemyPos.position = newPosition;
-                if(transform.position.y >= 7)
+                if(transform.position.y >= 8.4f)
                     MovementEnded();
             }
         }

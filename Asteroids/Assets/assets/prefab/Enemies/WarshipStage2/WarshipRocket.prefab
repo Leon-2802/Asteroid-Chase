@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 8686256425031939743}
   - component: {fileID: -9079561769850962716}
   - component: {fileID: 7920058036030883228}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WarshipRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: 
+  enemyList: {fileID: 0}
   animator: {fileID: 8686256425031939736}
   meteorPooler: {fileID: 0}
   projectilePrefab: missile

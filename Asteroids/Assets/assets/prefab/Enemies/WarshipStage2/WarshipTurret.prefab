@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 7647062326214295813}
   - component: {fileID: 7356483397584862898}
   - component: {fileID: -5922177260182456512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WarshipTurret
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: 
+  enemyList: {fileID: 0}
   animator: {fileID: 7647062326214295928}
   meteorPooler: {fileID: 0}
   projectilePrefab: laserRed
