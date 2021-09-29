@@ -5,6 +5,11 @@ using UnityEngine;
 public class MenuMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 0f;
+
+    void OnEnable() 
+    {
+        Time.timeScale = 1f;
+    }
     void Update()
     {
         if(transform.position.x > 30.2f) {

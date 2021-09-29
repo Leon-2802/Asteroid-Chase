@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 7647062326214295813}
   - component: {fileID: 7356483397584862898}
   - component: {fileID: -5922177260182456512}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: WarshipTurret
   m_TagString: enemy
   m_Icon: {fileID: 0}
