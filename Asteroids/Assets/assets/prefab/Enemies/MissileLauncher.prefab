@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: MissileLauncher
+  enemyList: {fileID: 0}
   animator: {fileID: 6983371716477164410}
   meteorPooler: {fileID: 0}
   projectilePrefab: missile

@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: FighterLvl2
+  enemyList: {fileID: 0}
   animator: {fileID: 7171106633423517789}
   meteorPooler: {fileID: 0}
   projectilePrefab: laserRed

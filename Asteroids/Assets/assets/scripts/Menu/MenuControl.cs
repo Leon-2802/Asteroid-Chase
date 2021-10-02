@@ -19,6 +19,11 @@ public class MenuControl : MonoBehaviour
         StartCoroutine(LoadingScreen());
     }
 
+    public void Exit() 
+    {
+        Application.Quit();
+    }
+
     IEnumerator LoadingScreen()
     {
         float totalProgress = 0f;

@@ -23,6 +23,7 @@ TagManager:
   - shieldCard
   - swarmCard
   - StarEruption
+  - Selectable
   layers:
   - Default
   - TransparentFX
