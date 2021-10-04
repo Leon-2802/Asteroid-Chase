@@ -11,7 +11,7 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] private GameObject laserDoubleText = null;
     private bool laserTextActive = false;
     [SerializeField] private GameObject seismicCharge = null;
-    // [SerializeField] private GameObject lenkrakete = null;
+    [SerializeField] private GameObject lenkrakete = null;
     // [SerializeField] private GameObject laserBurst = null;
     // [SerializeField] private GameObject hacking = null;
 
@@ -29,9 +29,9 @@ public class AbilityManager : MonoBehaviour
             case GameManager.Stages.STAGE_3:
                 seismicCharge.SetActive(true);
                 break;
-            // case GameManager.Stages.STAGE_4:
-            //     lenkrakete.SetActive(true);
-            //     break;
+            case GameManager.Stages.STAGE_4:
+                lenkrakete.SetActive(true);
+                break;
             // case GameManager.Stages.STAGE_5:
             //     laserBurst.SetActive(true);
             //     break;

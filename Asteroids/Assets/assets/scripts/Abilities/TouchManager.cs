@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TouchManager : MonoBehaviour
 {
+    [SerializeField] private GameObject lenkrakete = null;
+    [SerializeField] private FollowTarget lenkraketeScript = null;
     SoundManager soundManager;
 
     private void Start() 
@@ -36,6 +38,8 @@ public class TouchManager : MonoBehaviour
                 if(targetAnim != null && targetAnim.GetBool("Selected") == false)
                 {
                     targetAnim.SetBool("Selected", true);
+                    lenkraketeScript.target = hit.collider.transform;
+                    lenkrakete.SetActive(true);
                 }
             }
         }
