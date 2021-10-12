@@ -16,6 +16,12 @@ public class shipController : MonoBehaviour
 
     // [SerializeField] private Camera cam = null;
 
+    //Flames:
+    [SerializeField] private ParticleSystem emmissionRight = null;
+    [SerializeField] private ParticleSystem emmissionLeft = null;
+    [SerializeField] private float startLifetimeFlying = 1.3f;
+    [SerializeField] private float startLifetimeStanding = 0.3f;
+
     private Vector2 movement;
     private Vector3 magneticMovement;
     private Vector2 mousePos;
@@ -34,6 +40,14 @@ public class shipController : MonoBehaviour
         float moveX = joystickL.Horizontal;
         float moveY = joystickL.Vertical;
         movement = new Vector2(moveX, moveY).normalized;
+
+        if(moveX > 0.1f || moveX < -0.1f || moveY > 0.1f || moveY < -0.1f) {
+            emmissionRight.startLifetime = startLifetimeFlying;
+            emmissionLeft.startLifetime = startLifetimeFlying;
+        } else {
+            emmissionRight.startLifetime = startLifetimeStanding;
+            emmissionLeft.startLifetime = startLifetimeStanding;
+        }
         
         Vector3 newPosition = transform.position;
         newPosition += new Vector3(movement.x, movement.y, 0) * speed * Time.deltaTime;

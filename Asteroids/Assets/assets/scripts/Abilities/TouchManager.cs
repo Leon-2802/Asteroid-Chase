@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class TouchManager : MonoBehaviour
 {
     [SerializeField] private GameObject lenkrakete = null;
     [SerializeField] private FollowTarget lenkraketeScript = null;
     [SerializeField] private GameObject infoText = null;
-    [SerializeField] private int missileCounter = 0;
+    [SerializeField] private int missileCounter = 3;
+    [SerializeField] private TMP_Text missileCounterUI = null;
+    [SerializeField] private Image lenkraketeUI = null;
+    [SerializeField] private Sprite activeUI = null;
+    [SerializeField] private Sprite inactive = null;
     SoundManager soundManager;
 
     private void Start() 
@@ -16,8 +22,10 @@ public class TouchManager : MonoBehaviour
     }
     private void OnEnable() 
     {
-        infoText.SetActive(true);
-        missileCounter++;
+        if(missileCounter > 0) {
+            lenkraketeUI.sprite = activeUI;
+            infoText.SetActive(true);
+        }
     }
     void Update()
     {
@@ -35,7 +43,7 @@ public class TouchManager : MonoBehaviour
         //     }
         // }
 
-        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && missileCounter < 4) 
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && missileCounter > 0) 
         {
             Ray ray = Camera.main.ScreenPointToRay (Input.GetTouch(0).position);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
@@ -47,15 +55,17 @@ public class TouchManager : MonoBehaviour
                     targetAnim.SetBool("Selected", true);
                     lenkraketeScript.target = hit.collider.transform;
                     lenkrakete.SetActive(true);
+                    missileCounter--;
+                    missileCounterUI.text = missileCounter.ToString() + "x";
                 }
             }
         }
     }
 
-    public void Disable() 
+    private void OnDisable() 
     {
+        lenkraketeUI.sprite = inactive;
         lenkrakete.SetActive(false);
-        this.gameObject.SetActive(false);
     }
 
 }
