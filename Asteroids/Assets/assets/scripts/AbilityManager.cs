@@ -12,6 +12,7 @@ public class AbilityManager : MonoBehaviour
     private bool laserTextActive = false;
     [SerializeField] private GameObject seismicCharge = null;
     [SerializeField] private GameObject lenkrakete = null;
+    [SerializeField] private GameObject touchManager = null;
     // [SerializeField] private GameObject laserBurst = null;
     // [SerializeField] private GameObject hacking = null;
 
@@ -39,5 +40,10 @@ public class AbilityManager : MonoBehaviour
 
         // if(gameManager.bossDefeated[4] == true)
         //     hacking.SetActive(true);
+    }
+
+    public void ActivatePlayerMissile()
+    {
+        touchManager.SetActive(true);
     }
 }

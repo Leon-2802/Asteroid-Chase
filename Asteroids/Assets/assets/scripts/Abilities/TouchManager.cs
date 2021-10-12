@@ -6,11 +6,18 @@ public class TouchManager : MonoBehaviour
 {
     [SerializeField] private GameObject lenkrakete = null;
     [SerializeField] private FollowTarget lenkraketeScript = null;
+    [SerializeField] private GameObject infoText = null;
+    [SerializeField] private int missileCounter = 0;
     SoundManager soundManager;
 
     private void Start() 
     {
         soundManager = SoundManager.sManagerInstance;
+    }
+    private void OnEnable() 
+    {
+        infoText.SetActive(true);
+        missileCounter++;
     }
     void Update()
     {
@@ -28,7 +35,7 @@ public class TouchManager : MonoBehaviour
         //     }
         // }
 
-        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) 
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && missileCounter < 4) 
         {
             Ray ray = Camera.main.ScreenPointToRay (Input.GetTouch(0).position);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
@@ -44,4 +51,11 @@ public class TouchManager : MonoBehaviour
             }
         }
     }
+
+    public void Disable() 
+    {
+        lenkrakete.SetActive(false);
+        this.gameObject.SetActive(false);
+    }
+
 }

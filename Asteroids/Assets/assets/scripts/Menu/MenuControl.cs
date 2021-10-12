@@ -6,12 +6,30 @@ using UnityEngine.UI;
 
 public class MenuControl : MonoBehaviour
 {
+    [SerializeField] private GameObject asteroidChase = null;
+    [SerializeField] private GameObject endlessChase = null;
     [SerializeField] private GameObject hideMenu = null;
     [SerializeField] private GameObject loadingBar = null;
     [SerializeField] private ProgressBar fillAmount = null;
     private AsyncOperation sceneToLoad;
+    private bool playActive = false;
 
-    public void Play()
+    public void Play() 
+    {
+        if(playActive)
+        {
+            asteroidChase.SetActive(false);
+            endlessChase.SetActive(false);
+            playActive = false;
+        }
+        else 
+        {
+            asteroidChase.SetActive(true);
+            endlessChase.SetActive(true);
+            playActive = true;
+        }
+    }
+    public void AsteroidChase()
     {
         hideMenu.SetActive(true);
         loadingBar.SetActive(true);

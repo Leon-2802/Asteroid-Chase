@@ -5,13 +5,14 @@ using UnityEngine;
 public class FollowTarget : MonoBehaviour
 {
     [SerializeField] public Transform target = null;
+    [SerializeField] private Transform startPos = null;
     [SerializeField] private Rigidbody2D rb = null;
     [SerializeField] private float speed = 0f;
     Vector3 move;
 
     void OnEnable() 
     {
-        
+        transform.position = startPos.position;
     }
 
 
