@@ -25,6 +25,7 @@ public class spaceShipHitPrc : MonoBehaviour
     [SerializeField] private float shockwaveCounter = 0f;
     private float currentShockwaveCounter;
     private bool shockwaveHit = false;
+    [SerializeField] private GameObject energySparks = null;
     [SerializeField] private float energyBallInt = 0f;
     private float currentEnergyBallInt;
     private bool energyBallHit;
@@ -97,7 +98,7 @@ public class spaceShipHitPrc : MonoBehaviour
                 break;
             case "energy":
                 currentShockwaveCounter = shockwaveCounter;
-                shipAnim.SetTrigger("Hit");
+                energySparks.SetActive(true);
                 currentHealth -= damageEnergyBall;
                 healthbar.SetHealth(currentHealth);
                 shootCtrl.enabled = false;
@@ -106,7 +107,7 @@ public class spaceShipHitPrc : MonoBehaviour
                 break;
             case "energySI":
                 currentEnergyBallInt = energyBallInt;
-                shipAnim.SetTrigger("Hit");
+                energySparks.SetActive(true);
                 currentHealth -= damageEnergyBall;
                 healthbar.SetHealth(currentHealth);
                 shootCtrl.enabled = false;
@@ -131,7 +132,7 @@ public class spaceShipHitPrc : MonoBehaviour
         if(currentShockwaveCounter <= 0f) {
             currentHealth -= 20;
             healthbar.SetHealth(currentHealth);
-            shipAnim.SetTrigger("NoHit");
+            energySparks.SetActive(false);
             shootCtrl.enabled = true;
             shipController.enabled = true;
             shockwaveHit = false;
@@ -141,7 +142,7 @@ public class spaceShipHitPrc : MonoBehaviour
     {
         currentEnergyBallInt -= Time.deltaTime;
         if(currentEnergyBallInt <= 0) {
-            shipAnim.SetTrigger("NoHit");
+            energySparks.SetActive(false);
             shootCtrl.enabled = true;
             spaceInvadersCtrls.enabled = true;
             energyBallHit = false;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class shipController : MonoBehaviour
 {
     public static shipController instance;
+    [SerializeField] private GameManager gameManager = null;
     [SerializeField] private meteorManager meteorManager = null;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float slowedSpeed = 2f;
@@ -110,6 +111,8 @@ public class shipController : MonoBehaviour
 
     private void OnDisable() 
     {
+        if(gameManager.bossFight[2] == true)
+            return;
         rotateOnDisable.enabled = true;
     }
 }
