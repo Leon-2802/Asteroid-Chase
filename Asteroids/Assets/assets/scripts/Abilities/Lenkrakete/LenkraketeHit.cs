@@ -5,7 +5,6 @@ using UnityEngine;
 public class LenkraketeHit : MonoBehaviour
 {
     [SerializeField] private GameObject parent = null;
-    [SerializeField] private TouchManager touchManager = null;
     [SerializeField] private EnemyPooler enemyPooler = null;
     [SerializeField] private string explosion = null;
 

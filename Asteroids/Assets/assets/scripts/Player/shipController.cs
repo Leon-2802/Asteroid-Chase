@@ -22,6 +22,8 @@ public class shipController : MonoBehaviour
     [SerializeField] private float startLifetimeFlying = 1.3f;
     [SerializeField] private float startLifetimeStanding = 0.3f;
 
+    [SerializeField] private Rotation rotateOnDisable = null;
+
     private Vector2 movement;
     private Vector3 magneticMovement;
     private Vector2 mousePos;
@@ -29,6 +31,12 @@ public class shipController : MonoBehaviour
     {
         instance = this;
         currentSpeed = speed;
+    }
+    private void OnEnable() 
+    {
+        rb.angularVelocity = 0f;
+        rb.rotation = 0f;
+        rotateOnDisable.enabled = false;
     }
 
     void Update()
@@ -98,5 +106,10 @@ public class shipController : MonoBehaviour
         magneticMovement.x = moving2d.x;
         magneticMovement.y = moving2d.y;
         transform.position = magneticMovement;
+    }
+
+    private void OnDisable() 
+    {
+        rotateOnDisable.enabled = true;
     }
 }

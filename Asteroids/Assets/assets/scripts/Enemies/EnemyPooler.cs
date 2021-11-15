@@ -6,6 +6,8 @@ public class EnemyPooler : ObjectPooler
 {
     public static EnemyPooler instance;
     [SerializeField] private EnemyList enemyList = null;
+    [SerializeField] private GameObject lenkrakete = null;
+    [SerializeField] private GameObject lenkraketeParent = null;
     private void Awake() {
         instance = this;
     }
@@ -24,6 +26,8 @@ public class EnemyPooler : ObjectPooler
                         GameObject obj = Instantiate(pool.prefab);
                         obj.transform.parent = this.gameObject.transform;
                         obj.GetComponent<Fighter>().enemyList = enemyList;
+                        obj.GetComponentInChildren<TouchEvent>().lenkrakete = this.lenkrakete;
+                        obj.GetComponentInChildren<TouchEvent>().lenkraketeParent = this.lenkraketeParent;
                         obj.SetActive(false);
                         objectPool.Enqueue(obj);
                     }
@@ -33,6 +37,8 @@ public class EnemyPooler : ObjectPooler
                         GameObject obj = Instantiate(pool.prefab);
                         obj.transform.parent = this.gameObject.transform;
                         obj.GetComponent<FighterLvl2>().enemyList = enemyList;
+                        obj.GetComponentInChildren<TouchEvent>().lenkrakete = this.lenkrakete;
+                        obj.GetComponentInChildren<TouchEvent>().lenkraketeParent = this.lenkraketeParent;
                         obj.SetActive(false);
                         objectPool.Enqueue(obj);
                     }
@@ -42,6 +48,8 @@ public class EnemyPooler : ObjectPooler
                         GameObject obj = Instantiate(pool.prefab);
                         obj.transform.parent = this.gameObject.transform;
                         obj.GetComponent<MissileLauncher>().enemyList = enemyList;
+                        obj.GetComponentInChildren<TouchEvent>().lenkrakete = this.lenkrakete;
+                        obj.GetComponentInChildren<TouchEvent>().lenkraketeParent = this.lenkraketeParent;
                         obj.SetActive(false);
                         objectPool.Enqueue(obj);
                     }
