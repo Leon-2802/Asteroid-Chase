@@ -235,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 38761418}
   - component: {fileID: 38761419}
+  - component: {fileID: 38761420}
   m_Layer: 0
   m_Name: LenkraketeParent
   m_TagString: Untagged
@@ -276,6 +277,21 @@ MonoBehaviour:
   activeUI: {fileID: 21300000, guid: f98b02d8ff088a2409c3443274b017d2, type: 3}
   inactive: {fileID: 21300000, guid: ce0227e0ec8dc7d4b868061e2bba409d, type: 3}
   infoText: {fileID: 427462853}
+--- !u!114 &38761420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38761417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4e569ad00c1cc4482875fa04a4e63a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lenkrakete: {fileID: 1675588998}
+  lenkraketeScript: {fileID: 1675589001}
+  lenkraketeManager: {fileID: 38761419}
 --- !u!1 &39308157
 GameObject:
   m_ObjectHideFlags: 0
@@ -11377,7 +11393,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394240975}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e86f7bab1841b748bc939eb602e441a, type: 3}
   m_Name: 
@@ -15336,8 +15352,6 @@ MonoBehaviour:
     size: 4
     numberOfActive: 0
   enemyList: {fileID: 1515127375}
-  lenkrakete: {fileID: 1675588998}
-  lenkraketeParent: {fileID: 38761417}
 --- !u!114 &1515127371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18629,7 +18643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1987041552
 RectTransform:
   m_ObjectHideFlags: 0
