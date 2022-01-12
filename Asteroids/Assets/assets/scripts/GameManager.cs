@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
             timerFloat = 0;
         }
 
-        if(scoreCounter >= bossFightStarts[0] && scoreCounter <= bossFightStarts[1]) {
+        if(scoreCounter >= bossFightStarts[0] && scoreCounter < bossFightStarts[1]) {
             if(bossDefeated[0] == true) {
                 bossFight[0] = false;
                 return;
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
                 StageManaging(Stages.STAGE_2);
             }
         }
-        if(scoreCounter >= bossFightStarts[1] && scoreCounter <= bossFightStarts[2]) {
+        if(scoreCounter >= bossFightStarts[1] && scoreCounter < bossFightStarts[2]) {
             if(bossDefeated[1] == true) {
                 bossFight[1] = false;
                 StageManaging(Stages.STAGE_3);
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
                 bossManger.StartBossFight2();
             }
         }
-        if(scoreCounter >= bossFightStarts[2] && scoreCounter <= bossFightStarts[3]) {
+        if(scoreCounter >= bossFightStarts[2] && scoreCounter < bossFightStarts[3]) {
             if(bossDefeated[2] == true) {
                 bossFight[2] = false;
                 StageManaging(Stages.STAGE_4);
@@ -87,6 +87,16 @@ public class GameManager : MonoBehaviour
             else {
                 bossFight[2] = true;
                 bossManger.StartBossFight3();
+            }
+        }
+        if(scoreCounter >= bossFightStarts[3] && scoreCounter < bossFightStarts[4]) {
+            if(bossDefeated[3] == true) {
+                bossFight[3] = false;
+                StageManaging(Stages.STAGE_5);
+            }
+            else {
+                bossFight[3] = true;
+                bossManger.StartBossFight4();
             }
         }
     }

@@ -11,6 +11,7 @@ public class RotateTowards : MonoBehaviour
 
     void OnEnable() {
         currentPauseTime = pauseTime;
+        startPause = false;
     }
     void Update()
     {
@@ -19,9 +20,12 @@ public class RotateTowards : MonoBehaviour
             Vector2 lookdir = mainScript.target.position - mainScript.enemyPos.position;
             float angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg;
             mainScript.enemyRb.rotation = angle;
+
             startPause = true;
         }
-        if(startPause == true) {
+
+        if(startPause == true) 
+        {
             currentPauseTime -= Time.deltaTime;
             if(currentPauseTime <= 0) {
                 startPause = false;

@@ -7,6 +7,7 @@ public class WarshipMovement : MonoBehaviour
     [SerializeField] private float speed = 0f;
     [SerializeField] private float stopPoint = 13f;
     [SerializeField] private ParticleSystem[] engines = null;
+    public bool arrived = false;
     
     void Update()
     {
@@ -16,6 +17,7 @@ public class WarshipMovement : MonoBehaviour
             transform.position = newPosition;
         }
         else {
+            arrived = true;
             foreach(ParticleSystem ps in engines) {
                 ps.startLifetime = 2;
             }

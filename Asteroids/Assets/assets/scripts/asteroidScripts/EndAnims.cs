@@ -12,6 +12,9 @@ public class EndAnims : MonoBehaviour
             case "hit":
                 anim.SetTrigger("NoHit");
                 break;
+            case "deselect":
+                anim.SetBool("Selected", false);
+                break;
         }
     }
 }

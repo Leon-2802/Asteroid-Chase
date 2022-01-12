@@ -6,6 +6,8 @@ public class EnemyPooler : ObjectPooler
 {
     public static EnemyPooler instance;
     [SerializeField] private EnemyList enemyList = null;
+    [SerializeField] private Transform player = null;
+    [SerializeField] private MeteorPooler meteorPooler = null;
     private void Awake() {
         instance = this;
     }
@@ -24,6 +26,8 @@ public class EnemyPooler : ObjectPooler
                         GameObject obj = Instantiate(pool.prefab);
                         obj.transform.parent = this.gameObject.transform;
                         obj.GetComponent<Fighter>().enemyList = enemyList;
+                        obj.GetComponent<Fighter>().target = player;
+                        obj.GetComponent<Fighter>().meteorPooler = meteorPooler;
                         obj.SetActive(false);
                         objectPool.Enqueue(obj);
                     }
@@ -33,6 +37,8 @@ public class EnemyPooler : ObjectPooler
                         GameObject obj = Instantiate(pool.prefab);
                         obj.transform.parent = this.gameObject.transform;
                         obj.GetComponent<FighterLvl2>().enemyList = enemyList;
+                        obj.GetComponent<FighterLvl2>().target = player;
+                        obj.GetComponent<FighterLvl2>().meteorPooler = meteorPooler;
                         obj.SetActive(false);
                         objectPool.Enqueue(obj);
                     }
@@ -42,6 +48,8 @@ public class EnemyPooler : ObjectPooler
                         GameObject obj = Instantiate(pool.prefab);
                         obj.transform.parent = this.gameObject.transform;
                         obj.GetComponent<MissileLauncher>().enemyList = enemyList;
+                        obj.GetComponent<MissileLauncher>().target = player;
+                        obj.GetComponent<MissileLauncher>().meteorPooler = meteorPooler;
                         obj.SetActive(false);
                         objectPool.Enqueue(obj);
                     }

@@ -282,7 +282,6 @@ MonoBehaviour:
   targetSelected: 0
   inRange: 1
   points: 10
-  shipController: {fileID: 0}
 --- !u!114 &-1162717270168244945
 MonoBehaviour:
   m_ObjectHideFlags: 0
