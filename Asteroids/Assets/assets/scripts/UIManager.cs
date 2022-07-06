@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject healthbarBoss = null;
     [SerializeField] private GameObject bossFight2 = null;
     [SerializeField] private GameObject bossFight3 = null;
+    [SerializeField] private GameObject bossFight4 = null;
     [SerializeField] private float showUI = 0f;
     private float currentCounter;
     private bool hide2 = false;
@@ -93,6 +94,14 @@ public class UIManager : MonoBehaviour
         else if(gameManager.bossDefeated[2] == true && gameManager.scoreCounter < gameManager.bossFightStarts[3]) {
             healthbarBoss.SetActive(false);
             bossFight3.SetActive(false);
+        }
+
+        if(gameManager.scoreCounter >= gameManager.bossFightStarts[3] && gameManager.bossDefeated[3] == false) {
+            bossFight4.SetActive(true);
+        }
+        else if(gameManager.bossDefeated[3] == true && gameManager.scoreCounter < gameManager.bossFightStarts[4]) {
+            healthbarBoss.SetActive(false);
+            bossFight4.SetActive(false);
         }
         
     }

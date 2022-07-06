@@ -9,6 +9,8 @@ public class BossManger : MonoBehaviour
     [SerializeField] private GameObject bossFight3 = null;
     [SerializeField] private GameObject bossFight4 = null;
     [SerializeField] private shipController shipController = null;
+    [SerializeField] private GameObject spaceInvadersCtrls = null;
+    [SerializeField] private Rotation rotationScript = null;
     [SerializeField] private GameObject joystickL = null;
     [SerializeField] private GameObject joystickR = null;
     [SerializeField] private GameObject leftArrow = null;
@@ -32,6 +34,7 @@ public class BossManger : MonoBehaviour
     {
         bossFight3.SetActive(true);
         shipController.enabled = false;
+        spaceInvadersCtrls.SetActive(true);
         joystickL.SetActive(false);
         joystickR.SetActive(false);
         leftArrow.SetActive(true);
@@ -41,6 +44,7 @@ public class BossManger : MonoBehaviour
     {
         bossFight3.SetActive(false);
         shipController.enabled = true;
+        spaceInvadersCtrls.SetActive(false);
         joystickL.SetActive(true);
         joystickR.SetActive(true);
         leftArrow.SetActive(false);
@@ -52,7 +56,9 @@ public class BossManger : MonoBehaviour
     public void StartBossFight4()
     {
         bossFight4.SetActive(true);
+        rotationScript.enabled = false;
         shipController.enabled = false;
+        spaceInvadersCtrls.SetActive(true);
         joystickL.SetActive(false);
         joystickR.SetActive(false);
         leftArrow.SetActive(true);
@@ -62,6 +68,7 @@ public class BossManger : MonoBehaviour
     {
         bossFight4.SetActive(false);
         shipController.enabled = true;
+        spaceInvadersCtrls.SetActive(false);
         joystickL.SetActive(true);
         joystickR.SetActive(true);
         leftArrow.SetActive(false);

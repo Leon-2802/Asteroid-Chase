@@ -24,7 +24,7 @@ public class LaunchEnergyBalls : MonoBehaviour
     public void SpawnEnergyBalls()
     {
         float angleStep = 360f / numberOfProjectiles;
-        float angle = 0f;
+        float angle = Random.Range(0f, 360f);
 
         for (int i = 0; i < prefabs.Count; i++) {
 			

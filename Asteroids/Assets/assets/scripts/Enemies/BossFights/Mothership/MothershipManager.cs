@@ -5,9 +5,9 @@ using UnityEngine;
 public class MothershipManager : WarshipManager
 {
     [SerializeField] public GameManager gameManager = null;
-    [SerializeField] private GameObject energyBallLauncher = null;
-    [SerializeField] private SwarmLauncher swarmLauncher = null;
-    [SerializeField] private float swarmInt = 3f;
+    [SerializeField] protected GameObject energyBallLauncher = null;
+    [SerializeField] protected SwarmLauncher swarmLauncher = null;
+    [SerializeField] protected float swarmInt = 3f;
     private float currentSwarmInt;
     void OnEnable()
     {

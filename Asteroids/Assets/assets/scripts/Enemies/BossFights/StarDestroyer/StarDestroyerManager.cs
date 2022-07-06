@@ -2,22 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarDestroyerManager : WarshipManager
+public class StarDestroyerManager : MothershipManager
 {
-    [SerializeField] public GameManager gameManager = null;
+    [SerializeField] public bool[] rowDestroyed = {false, false, false};
+    [SerializeField] private GameObject healthbarUI = null;
     [SerializeField] private GameObject[] ionenKanonen = null;
-    [SerializeField] private SwarmLauncher swarmLauncher = null;
-    [SerializeField] private float swarmInt = 3f;
-    private float currentSwarmInt;
+    [SerializeField] private GameObject guns = null;
+    private float currentSwarmInterval;
     
     void OnEnable()
     {
-        currentSwarmInt = swarmInt;
+        currentSwarmInterval = swarmInt;
     }
 
     // Update is called once per frame
     protected override void Update()
     {
+        if(rowDestroyed[0] == true && rowDestroyed[1] == true && rowDestroyed[2] == true) 
+        {
+            for(int i = 0; i < ionenKanonen.Length; i++) {
+                ionenKanonen[i].SetActive(true);
+            }
+
+            healthbarUI.SetActive(true);
+            shipColliders.SetActive(true);
+            guns.SetActive(true);
+            energyBallLauncher.SetActive(true);
+
+            currentSwarmInterval -= Time.deltaTime;
+            if(currentSwarmInterval <= 0) {
+                swarmLauncher.SpawnSwarm();
+                currentSwarmInterval = swarmInt;
+            }
+        }
+
+
         if(currentHealth <= 0) 
         {
             shipColliders.SetActive(false);
